@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+.idea/
+*.npz
+*.png
+known_words_cache.json
+floquet_catalogue.json
+*_candidates.json
+.DS_Store

@@ -1,0 +1,3 @@
+- [Stay in Python](project_no_rust_rewrite.md) — no Rust/C++ rewrite; bottleneck is compiled Fortran integrator, not Python glue
+- [LL data inaccessible](project_ll_data_inaccessible.md) — Li & Liao 695-family data has no downloadable format; cross-ref against Jankovic/Suvakov only
+- [No inline python3 -c](feedback_no_inline_python.md) — write to .py file first, then execute; inline scripts with comments trigger security prompts
