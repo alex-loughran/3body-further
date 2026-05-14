@@ -278,19 +278,17 @@ _WORD_CACHE_PATH = "known_words_cache.json"
 
 def _load_word_cache():
     """Load cached known orbit words from disk."""
-    global _known_words_cache
     if _known_words_cache:
         return
     try:
         with open(_WORD_CACHE_PATH) as f:
             raw = json.load(f)
-        # JSON keys are strings; convert back to tuples
-        _known_words_cache = {tuple(k.split("|")): v for k, v in raw.items()}
-        # Fix index back to int
-        _known_words_cache = {(src, int(idx)): w
-                              for (src, idx), w in _known_words_cache.items()}
+        # Mutate in-place (not reassign) so imported references stay valid
+        for k, v in raw.items():
+            parts = k.split("|")
+            _known_words_cache[(parts[0], int(parts[1]))] = v
     except (FileNotFoundError, json.JSONDecodeError):
-        _known_words_cache = {}
+        pass
 
 
 def _save_word_cache():
