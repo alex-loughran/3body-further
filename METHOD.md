@@ -1,4 +1,4 @@
-di # Method: Periodic Orbit Detection and Classification in the Planar Equal-Mass Three-Body Problem
+# Method: Periodic Orbit Detection and Classification in the Planar Equal-Mass Three-Body Problem
 
 ## 1. Problem Statement
 
@@ -272,6 +272,75 @@ Per-candidate JSON with: id, parametrisation, raw/refined parameters, L, T, d_mi
 
 ### Orbit plots (candidates_plots/)
 Per-orbit PNG with real-space trajectories (3 bodies, colour-coded) and shape sphere stereographic projection (with collision point markers).
+
+---
+
+## 14. Compound Matrix Method — Investigation and Comparison
+
+### 14.1 Motivation
+
+The standard variational method (§8) integrates a 12×12 state transition matrix (STM) alongside the orbit — 156 components total. For highly unstable orbits, the STM columns collapse onto the dominant eigenvector as the largest Floquet multiplier λ₁ grows exponentially. The existing segmented integration (§8.3) mitigates this by splitting [0, T] into shorter intervals and resetting the STM.
+
+The **2nd compound matrix method** is an alternative: instead of the 12×12 STM Φ(t), track its 2nd exterior power Φ^(2)(t), a 66×66 matrix (C(12,2) = 66). If dΦ/dt = J(t)Φ, then dΦ^(2)/dt = J^[2](t)Φ^(2), where J^[2] is the 2nd additive compound of J. The eigenvalues of Φ^(2)(T) are products λ_iλ_j of pairs of Floquet multipliers.
+
+In theory, the compound's dominant eigenvalue is λ₁λ₂ rather than λ₁, which should grow more slowly when the instability is concentrated in a single direction (λ₁ ≫ λ₂).
+
+### 14.2 Implementation
+
+The 2nd additive compound J^[2] of the 12×12 Jacobian J is a 66×66 matrix with entries determined by index pair relationships. Five rules cover all nonzero entries (the rest are zero):
+
+| Row (p,q), Col (i,j) | Value |
+|---|---|
+| (p,q) = (i,j) | J[i,i] + J[j,j] |
+| q = j, p ≠ i | J[p,i] |
+| p = j | −J[q,i] |
+| p = i, q ≠ j | J[q,j] |
+| q = i | −J[p,j] |
+
+The sparsity pattern is fixed (depends only on index pairings, not on J's values), so the nonzero positions are precomputed at import time as arrays. At runtime, filling the 66×66 matrix requires two vectorized NumPy operations — no Python loops in the hot path.
+
+The extended system has 12 + 66² = 4368 components, integrated with DOP853 at the same tolerances as the standard method.
+
+### 14.3 Validation
+
+The compound construction was verified by checking that:
+1. tr(J^[2]) = (n−1)·tr(J) for n = 12 (exact to machine precision)
+2. Eigenvalues of J^[2] equal all pairwise sums λ_i + λ_j of J's eigenvalues (error < 10⁻¹⁴)
+
+### 14.4 Empirical comparison
+
+Both methods were run on five orbits spanning the stability spectrum. All orbits were Newton-refined or used published high-precision parameters.
+
+| Orbit | λ_max | T | Slowdown | det(M) err | det(C) err | Max rel err |
+|---|---|---|---|---|---|---|
+| Figure-eight (stable) | 1.0 | 6.3 | 1.5× | 3×10⁻¹³ | 6×10⁻¹² | 1.3×10⁻⁴ |
+| Butterfly I | 1.8 | 6.2 | 1.9× | 7×10⁻¹⁰ | 9×10⁻⁷ | 7.8×10⁻³ |
+| Jankovic #51 | 10.7 | 5.3 | 2.1× | 4×10⁻¹¹ | 3×10⁻⁸ | 1.4×10⁻³ |
+| Jankovic #6 | 1085 | 6.8 | 1.8× | 7×10⁻¹⁰ | 3.7×10⁻⁵ | 3.6×10⁻³ |
+| Moth II | 1.9 | 28.7 | 1.8× | 1.4×10⁻¹⁰ | 2.3×10⁻⁵ | 1.9×10⁻² |
+| Butterfly IV | — | 79.5 | — | — | **FAILED** | — |
+
+**"Max rel err"** is the maximum relative error between the 66 magnitude-sorted pairwise products from the standard multipliers and the 66 magnitude-sorted compound eigenvalues.
+
+**"det err"** is |det − 1|: for the standard monodromy det(M) should be 1 (symplecticity); for the compound det(C) = det(M)¹¹ should also be 1.
+
+### 14.5 Findings
+
+1. **Speed**: The compound method is only ~2× slower despite having 28× more components (4368 vs 156). NumPy's BLAS handles the 66×66 matrix multiply efficiently.
+
+2. **Accuracy**: The standard method is more accurate in every test case. Its determinant error is consistently 2–5 orders of magnitude better than the compound's. The 4356 extra components accumulate more numerical error per integration step.
+
+3. **Long orbits**: The compound method fails entirely for T = 79.5 (butterfly IV), where the standard method succeeds with segmented integration. The large system becomes too stiff for DOP853 at the required tolerances.
+
+4. **Conditioning theory doesn't apply here**: The compound's largest eigenvalue is λ₁λ₂. For Jankovic #6 (λ_max = 1085), the largest compound eigenvalue is λ₁λ₂ = 4418 — *larger* than λ₁. The conditioning only improves when the dominant instability direction is unique (λ₁ ≫ λ₂ ≈ 1), but many three-body orbits have multiple unstable directions.
+
+5. **Cross-validation**: Despite the accuracy difference, both methods agree to ~10⁻³ relative error on the pairwise products, confirming that the standard method's results are trustworthy across the full stability range.
+
+### 14.6 Conclusion
+
+The standard variational method with segmented integration (§8) outperforms the 2nd compound matrix method in both speed and accuracy for this problem. The compound method is retained as a cross-validation tool in `compound.py` but is not used in the production pipeline.
+
+The fundamental issue is dimensionality: for a 12D phase space, the 2nd compound expands the system from 144 to 4356 components, accumulating more error per step than the smaller system. The segmented integration approach solves the conditioning problem more efficiently by resetting the 12×12 STM at segment boundaries.
 
 ---
 

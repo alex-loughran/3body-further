@@ -56,6 +56,10 @@ Handles: parallel dispatch via `multiprocessing.Pool`, per-row incremental savin
 - **Close approach robustness** — blanket `except: continue` replaced with specific `except (RuntimeError, FloatingPointError)` across scanner.py, three_body.py, and pipeline.py
 - **New parametrisations** — both symmetric and BHH are 2D slices of a 6D space; physical intuition may suggest others
 
+## Investigated and parked
+
+- **Compound matrix method** — 2nd exterior power of the STM as alternative Floquet computation. Implemented in `compound.py`, compared against standard method on 5 orbits. Standard + segmentation wins on speed and accuracy. See METHOD.md §14 for full comparison table. Code kept for cross-validation.
+
 ## ML integration — parked for later
 
 Needs 1000×1000+ scan data. Surrogate model for rapid RPF approximation, orbit classification from trajectory features, autoencoder analysis of parameter space structure.

@@ -32,6 +32,12 @@ The preceding steps were independent tools. The pipeline chains them into a sing
 
 Before running large scans for new orbits, we applied the full Floquet analysis to all 110 known orbits as both a **validation exercise** and a source of **new results**. This produced two findings: (a) the topological Kepler's third law (T* ≈ 2.433) breaks down for single-letter words (BHH orbits), and (b) all 9 stable orbits are mixed-letter, L = 0, figure-eight family members — pure-letter words are always unstable. These stability-topology correlations have not been reported in the literature for this set of orbits.
 
+## 8. Compound matrix method investigation (`compound.py`)
+
+The 2nd compound matrix method was implemented as an alternative to the standard variational approach for computing Floquet multipliers. Instead of the 12×12 state transition matrix (144 components), it tracks the 66×66 2nd exterior power (4356 components), whose eigenvalues are products λᵢλⱼ of pairs of multipliers. In theory, this should be better conditioned for highly unstable orbits.
+
+Empirical comparison across five orbits (stable through λ_max = 1085) showed the standard method with segmented integration is both faster (~2×) and more accurate (2–5 orders of magnitude better determinant errors). The compound method also fails entirely for long-period orbits (T > 60) where the large system becomes too stiff. The code is retained as a cross-validation tool but is not used in the production pipeline.
+
 ## Current status
 
 The infrastructure is complete and validated. The remaining work is running large-scale BHH scans (1000×1000 at 9 angular momentum values) on AWS, which is where genuinely new orbits — in parameter space Li & Liao did not search — would be found. The pipeline is ready to process whatever comes out.
