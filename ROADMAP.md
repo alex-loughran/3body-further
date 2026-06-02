@@ -30,17 +30,17 @@ Handles: parallel dispatch via `multiprocessing.Pool`, per-row incremental savin
 - Validated: figure-eight (stable, all |λ|≈1), butterfly I (unstable, λ_max≈1.78), BHH orbit #1 (unstable, λ_max≈33)
 - All validation gates pass: det(M)=1, ≥2 unit eigenvalues, figure-eight confirmed linearly stable
 
-## Phase 3: Scan campaigns + catalogue cross-reference (in progress)
+## Phase 3: Scan campaigns + catalogue cross-reference
 
 **Goal:** Produce a list of candidates verified as genuinely new or identified as rediscoveries.
 
 **Status: Pipeline complete. Big scans not yet run.**
 - `pipeline.py` — full end-to-end pipeline: scan → extract peaks → estimate period → Newton-refine → Floquet classify → cross-reference → JSON output
 - CLI: `python main.py process-scan <file> sym/bhh [L] [threshold]`
-- Cross-references against: figure-eight, 15 Suvakov named orbits, 19 figure-eight satellites, 75 Jankovic BHH orbits
+- Cross-references against: figure-eight, 15 Suvakov named orbits, 19 figure-eight satellites, 75 Jankovic BHH orbits, AND Li & Liao 695 families (symmetric scans)
 - Canonical cyclic word form for rotation-invariant matching
 - Period multiple detection via word repetition + period ratio check
-- Li & Liao's 695-family data is inaccessible (confirmed) — cross-reference is against Jankovic/Suvakov only
+- Li & Liao cross-referencing fully wired in: `ll_orbits.json` (695 entries with precomputed words) checked for symmetric candidates via `_get_known_ll_words()` in `pipeline.py`
 - Tested on existing 200×200 symmetric scan: correctly identifies figure-eight + butterfly I
 
 **Remaining work:**
