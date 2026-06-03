@@ -193,6 +193,29 @@ A JSON file (`floquet_catalogue.json`) containing Newton-refined parameters, Flo
 
 ---
 
+## First BHH Scan Campaign (200×200, L=0.5, 1.0, 1.5)
+
+### Scan results
+- **L=0.5**: 46 min, 0 candidates above threshold
+- **L=1.0**: 35 min, 41 candidates
+- **L=1.5**: ~40 min, TBD candidates
+- Machine: Mac Mini, 10-core Apple Silicon
+
+### Newton divergence → OOM kill
+During pipeline processing of the L=1.0 scan, candidate 4 (params=(0.053, 0.796), T≈11.4) caused the process to be killed by the OS. The Newton-Raphson residual was growing (4.5e-5 → 4.6 → 22.8 → 64.5) — the starting guess was outside the basin of attraction, so each iteration sent parameters further into bad regions where the integrator took more and more steps, consuming memory until the OS killed it.
+
+**Fix**: Added divergence detection to `refine_newton` in `floquet.py`. If the residual exceeds 100× the best seen so far or exceeds 1e3 in absolute terms, Newton bails out immediately and returns `converged=False`. This catches the failure in 2–3 iterations instead of letting it run away.
+
+### Pipeline parallelisation
+The original pipeline processed candidates sequentially — each one goes through period estimation → Newton-Raphson → Floquet analysis, all single-threaded. With 41 candidates at several minutes each, this meant hours of processing with 9 of 10 cores idle.
+
+**Fix**: Split the pipeline into a parallel phase (period estimation + Newton + Floquet, dispatched via `multiprocessing.Pool`) and a sequential phase (cross-referencing + deduplication, which need access to accumulated results). The cross-reference word cache is warmed in the main process before dispatching workers to avoid concurrent file writes.
+
+### Adaptive scan removal
+The `adaptive_scan` function zoomed into peaks from a coarse scan at higher resolution to get a better Newton-Raphson starting guess. Since Newton has quadratic convergence, the coarse grid starting guess is already sufficient — the zoom step saved at most one Newton iteration (~seconds) per candidate while adding code complexity. Removed along with the `refine-scan` CLI command.
+
+---
+
 ## Files in the project
 
 | File | Lines | Purpose |

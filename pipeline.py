@@ -4,6 +4,7 @@ Takes .npz scan files and produces a classified orbit catalogue as JSON.
 """
 
 import json
+import multiprocessing as mp
 import numpy as np
 
 from three_body import (
@@ -472,9 +473,59 @@ def cross_reference(word, T, parametrisation, L=None, verbose=False):
 # Full pipeline
 # ---------------------------------------------------------------------------
 
+def _process_one_candidate(args):
+    """Worker: estimate period → Newton-refine → Floquet classify for one candidate.
+
+    Returns (idx, result_dict) on success, or (idx, None) on failure.
+    Runs in a subprocess — must not touch shared state (word cache, plots, etc.).
+    """
+    idx, params, parametrisation, L, T_max = args
+
+    # Estimate period
+    try:
+        d_min_raw, T_guess = estimate_period(params, parametrisation, L, T_max)
+    except (RuntimeError, FloatingPointError):
+        return (idx, None)
+
+    # Refine
+    try:
+        ref = refine_candidate(params, T_guess, parametrisation, L, verbose=False)
+    except (RuntimeError, FloatingPointError, np.linalg.LinAlgError):
+        return (idx, None)
+
+    if not ref["converged"]:
+        return (idx, None)
+
+    # Classify
+    try:
+        cls = classify_candidate(ref["state0"], ref["T"])
+    except (RuntimeError, FloatingPointError, np.linalg.LinAlgError):
+        return (idx, None)
+
+    return (idx, {
+        "params": params,
+        "ref": {
+            "params_refined": ref["params_refined"],
+            "T": ref["T"],
+            "d_min": ref["d_min"],
+            "converged": ref["converged"],
+            "state0": ref["state0"],
+        },
+        "cls": {
+            "word": cls["word"],
+            "stability": cls["stability"],
+            "valid": cls["valid"],
+            "sol": cls["sol"],
+        },
+    })
+
+
 def process_scan(scan_path, parametrisation, L=None, threshold=3.5,
-                 T_max=16.0, output_path=None, verbose=True):
+                 T_max=16.0, output_path=None, verbose=True, n_workers=None):
     """Full pipeline: load → extract → refine → classify → cross-reference.
+
+    Candidate refinement and classification run in parallel across n_workers
+    processes. Cross-referencing and deduplication run sequentially after.
 
     Returns list of candidate dicts. Saves to JSON if output_path given.
     """
@@ -496,54 +547,58 @@ def process_scan(scan_path, parametrisation, L=None, threshold=3.5,
             print("  No candidates found. Try lowering threshold.")
         return []
 
+    # Warm the cross-reference word cache before dispatching workers
+    # (workers don't write to the cache — only the main process does)
+    if verbose:
+        print("Warming cross-reference cache...")
+    if parametrisation == "symmetric":
+        _get_known_symmetric_words(verbose=verbose)
+        _get_known_ll_words(verbose=verbose)
+    elif parametrisation == "bhh":
+        _get_known_bhh_words(L, verbose=verbose)
+
+    # --- Parallel phase: period estimation + Newton + Floquet ---
+    if n_workers is None:
+        n_workers = mp.cpu_count()
+
+    worker_args = [
+        (idx, cand["params"], parametrisation, L, T_max)
+        for idx, cand in enumerate(candidates)
+    ]
+
+    if verbose:
+        print(f"\nProcessing {len(candidates)} candidates ({n_workers} workers)...")
+
+    refined = {}
+    done = 0
+    with mp.Pool(n_workers) as pool:
+        for idx, result in pool.imap_unordered(_process_one_candidate, worker_args):
+            done += 1
+            rpf = candidates[idx]["rpf"]
+            params = candidates[idx]["params"]
+            if result is not None:
+                refined[idx] = result
+                if verbose:
+                    word = result["cls"]["word"]
+                    T = result["ref"]["T"]
+                    print(f"  [{done}/{len(candidates)}] Candidate {idx + 1}: "
+                          f"({params[0]:.6f}, {params[1]:.6f}) → "
+                          f"word={word}, T={T:.4f}")
+            else:
+                if verbose:
+                    print(f"  [{done}/{len(candidates)}] Candidate {idx + 1}: "
+                          f"({params[0]:.6f}, {params[1]:.6f}) — failed")
+
+    if verbose:
+        print(f"\n{len(refined)}/{len(candidates)} candidates refined successfully")
+
+    # --- Sequential phase: cross-reference + deduplication ---
     results = []
-    for idx, cand in enumerate(candidates):
-        params = cand["params"]
-        if verbose:
-            print(f"\n--- Candidate {idx + 1}/{len(candidates)}: "
-                  f"params=({params[0]:.6f}, {params[1]:.6f}), rpf={cand['rpf']:.2f} ---")
-
-        # Estimate period
-        try:
-            d_min_raw, T_guess = estimate_period(
-                params, parametrisation, L, T_max)
-            if verbose:
-                print(f"  Period estimate: T={T_guess:.4f}, d_min={d_min_raw:.2e}")
-        except (RuntimeError, FloatingPointError) as e:
-            if verbose:
-                print(f"  Period estimation failed: {e}")
-            continue
-
-        # Refine
-        try:
-            ref = refine_candidate(params, T_guess, parametrisation, L,
-                                   verbose=verbose)
-            if verbose:
-                pr = ref["params_refined"]
-                print(f"  Refined: ({pr[0]:.10f}, {pr[1]:.10f}), "
-                      f"T={ref['T']:.8f}, d_min={ref['d_min']:.2e}, "
-                      f"converged={ref['converged']}")
-        except (RuntimeError, FloatingPointError, np.linalg.LinAlgError) as e:
-            if verbose:
-                print(f"  Refinement failed: {e}")
-            continue
-
-        if not ref["converged"]:
-            if verbose:
-                print("  Skipping (did not converge)")
-            continue
-
-        # Classify
-        try:
-            cls = classify_candidate(ref["state0"], ref["T"])
-            if verbose:
-                stab = cls["stability"]
-                print(f"  Word: {cls['word']}, stable={stab['is_stable']}, "
-                      f"det(M)={stab['determinant']:.6f}")
-        except (RuntimeError, FloatingPointError, np.linalg.LinAlgError) as e:
-            if verbose:
-                print(f"  Classification failed: {e}")
-            continue
+    for idx in sorted(refined):
+        r = refined[idx]
+        ref = r["ref"]
+        cls = r["cls"]
+        params = r["params"]
 
         # Cross-reference
         xref = cross_reference(cls["word"], ref["T"], parametrisation, L,
@@ -551,27 +606,21 @@ def process_scan(scan_path, parametrisation, L=None, threshold=3.5,
         if verbose:
             if xref:
                 k_str = f" (period x{xref['k_multiple']})" if xref["k_multiple"] != 1 else ""
-                print(f"  Match: {xref['matched_name']}{k_str}")
+                print(f"  Candidate {idx + 1}: match {xref['matched_name']}{k_str}")
             else:
-                print(f"  No match in known catalogue — possible new orbit")
+                print(f"  Candidate {idx + 1}: no match — possible new orbit")
 
-        # Deduplication: skip if refined params match an existing result
-        # Check both raw parameter match AND energy-normalised match
-        # (same orbit family at different energies)
+        # Deduplication
         pr = ref["params_refined"]
         is_dup = False
         for prev in results:
             pp = prev["params_refined"]
-            # Direct parameter match
             if (abs(pr[0] - pp[0]) < 1e-6 and abs(pr[1] - pp[1]) < 1e-6
                     and abs(ref["T"] - prev["T"]) < 1e-4):
                 if verbose:
-                    print(f"  Duplicate of {prev['id']} — skipping")
+                    print(f"  Candidate {idx + 1}: duplicate of {prev['id']}")
                 is_dup = True
                 break
-            # Energy-normalised match: same family at different energy
-            # Rescale both to E=-0.5, compare periods and words
-            # Use canonical form so cyclic permutations are caught
             prev_word = prev.get("free_group_word", "")
             if (canonical_word(cls["word"]) == canonical_word(prev_word)
                     and cls["word"] != "?" and prev_word != "?"):
@@ -583,7 +632,7 @@ def process_scan(scan_path, parametrisation, L=None, threshold=3.5,
                     T_norm_prev = prev["T"] * tf_prev
                     if abs(T_norm_new - T_norm_prev) / max(T_norm_new, T_norm_prev) < 1e-3:
                         if verbose:
-                            print(f"  Same family as {prev['id']} (energy-normalised) — skipping")
+                            print(f"  Candidate {idx + 1}: same family as {prev['id']}")
                         is_dup = True
                         break
                 except (ValueError, ZeroDivisionError):
@@ -628,12 +677,6 @@ def process_scan(scan_path, parametrisation, L=None, threshold=3.5,
             "is_new": xref is None,
         }
         results.append(entry)
-
-        # Incremental checkpoint
-        if output_path and len(results) % 5 == 0:
-            _save_results(results, output_path + ".partial")
-            if verbose:
-                print(f"  [Checkpoint: {len(results)} results saved]")
 
     if verbose:
         n_new = sum(1 for r in results if r["is_new"])
