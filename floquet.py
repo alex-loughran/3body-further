@@ -490,6 +490,20 @@ def refine_newton(params0, T_guess, param_to_state, max_iter=20,
                 info["monodromy"] = last_monodromy
             return params, T, True, info
 
+        # Divergence detection: if residual has grown substantially from
+        # the best value seen, the starting guess is outside the basin
+        # of attraction.  Bail out to avoid runaway integration cost.
+        if len(history) >= 2:
+            best = min(history[:-1])
+            if residual > 100 * best or residual > 1e3:
+                if verbose:
+                    print(f"  Diverging (|F| = {residual:.4e}, best was {best:.4e}), aborting")
+                state = param_to_state(params)
+                info = {"history": history, "iterations": iteration, "state": state}
+                if last_monodromy is not None:
+                    info["monodromy"] = last_monodromy
+                return params, T, False, info
+
         # Stagnation detection: if residual has plateaued and is
         # already small, declare convergence at the precision floor.
         # The 1e-5 threshold handles long-period orbits where the
