@@ -200,16 +200,119 @@ def plot_instability_by_L(cat):
     plt.close()
 
 
+def print_tstar_residuals(cat):
+    """Identify orbits with largest T* deviations and analyse patterns."""
+    print("=== T* Residuals (deviations from 2.433) ===\n")
+
+    entries = []
+    for r in cat:
+        word = r["word"]
+        if "?" in word or len(word) == 0:
+            continue
+        L_f = len(word)
+        T_star = r["T"] * abs(r["E"]) ** 1.5 / L_f
+        entries.append((r["name"], r["parametrisation"], r["L"],
+                        L_f, T_star, T_star - 2.433, word))
+
+    # Sort by absolute deviation
+    entries.sort(key=lambda x: -abs(x[5]))
+
+    print(f"{'Name':<30} {'Type':<5} {'L':>5} {'Lf':>3} {'T*':>7} {'Δ':>7}")
+    print("-" * 62)
+    for name, ptype, L, Lf, Tstar, delta, word in entries[:20]:
+        print(f"{name:<30} {ptype:<5} {L:>5.2f} {Lf:>3} {Tstar:>7.3f} {delta:>+7.3f}")
+
+    # Statistics by word type
+    pure = [e for e in entries if len(set(e[6])) == 1]
+    mixed = [e for e in entries if len(set(e[6])) > 1]
+    if pure:
+        pure_tstars = [e[4] for e in pure]
+        print(f"\nPure-letter words: T* = {np.mean(pure_tstars):.3f} ± {np.std(pure_tstars):.3f}"
+              f" (n={len(pure)}, range [{min(pure_tstars):.3f}, {max(pure_tstars):.3f}])")
+    if mixed:
+        mixed_tstars = [e[4] for e in mixed]
+        print(f"Mixed-letter words: T* = {np.mean(mixed_tstars):.3f} ± {np.std(mixed_tstars):.3f}"
+              f" (n={len(mixed)}, range [{min(mixed_tstars):.3f}, {max(mixed_tstars):.3f}])")
+
+
+def print_multiplier_structure(cat):
+    """Analyse Floquet multiplier spectra: unstable direction counts vs word structure."""
+    print("=== Multiplier Structure ===\n")
+
+    def word_type(word):
+        if "?" in word:
+            return "unknown"
+        if len(set(word)) == 1:
+            return "pure"
+        return "mixed"
+
+    # Unstable directions by word type
+    print(f"{'Word type':<10} {'0 unstable':>10} {'2 unstable':>10} {'4 unstable':>10}")
+    print("-" * 44)
+    for wt in ["pure", "mixed"]:
+        counts = {0: 0, 2: 0, 4: 0}
+        for r in cat:
+            if word_type(r["word"]) != wt:
+                continue
+            n_unstable = sum(1 for m in r["multiplier_magnitudes"] if m > 1.01)
+            counts[n_unstable] = counts.get(n_unstable, 0) + 1
+        print(f"{wt:<10} {counts.get(0,0):>10} {counts.get(2,0):>10} {counts.get(4,0):>10}")
+
+    # Instability scaling with L for BHH orbits (fixed word length ranges)
+    print(f"\n{'L':>6} {'n_orbits':>8} {'mean log10(λmax)':>17} {'std':>6}")
+    print("-" * 42)
+    bhh = [r for r in cat if r["parametrisation"] == "bhh" and "?" not in r["word"]]
+    L_groups = {}
+    for r in bhh:
+        L_val = round(r["L"], 3)
+        L_groups.setdefault(L_val, []).append(r)
+    for L_val in sorted(L_groups):
+        orbits = L_groups[L_val]
+        log_lams = [np.log10(r["max_instability"]) for r in orbits]
+        print(f"{L_val:>6.3f} {len(orbits):>8} {np.mean(log_lams):>17.3f} {np.std(log_lams):>6.3f}")
+
+
+def plot_multiplier_spectrum(cat):
+    """Plot number of unstable directions vs word length."""
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    for r in cat:
+        word = r["word"]
+        if "?" in word or len(word) == 0:
+            continue
+        L_f = len(word)
+        n_unstable = sum(1 for m in r["multiplier_magnitudes"] if m > 1.01)
+
+        if r["parametrisation"] == "symmetric":
+            ax.plot(L_f, n_unstable, "bo", ms=6, alpha=0.6)
+        else:
+            ax.plot(L_f, n_unstable, "r^", ms=6, alpha=0.6)
+
+    ax.set_xlabel("Free group word length $L_f$", fontsize=12)
+    ax.set_ylabel("Number of unstable directions", fontsize=12)
+    ax.set_title("Unstable Directions vs Topological Complexity", fontsize=13)
+    ax.set_yticks([0, 2, 4])
+    ax.legend(["Symmetric (L=0)", "BHH (L≠0)"], fontsize=10)
+    plt.tight_layout()
+    plt.savefig("unstable_directions.png", dpi=150)
+    plt.close()
+
+
 if __name__ == "__main__":
     cat = load_catalogue()
     print_stability_summary(cat)
     print()
     print_topology_correlation(cat)
     print()
+    print_tstar_residuals(cat)
+    print()
+    print_multiplier_structure(cat)
+    print()
     print("Generating plots...")
     plot_tstar_vs_wordlength(cat)
     plot_stability_landscape(cat)
     plot_tstar_by_L(cat)
     plot_instability_by_L(cat)
+    plot_multiplier_spectrum(cat)
     print("Saved: tstar_vs_wordlength.png, stability_landscape.png, "
-          "tstar_by_L.png, instability_by_L.png")
+          "tstar_by_L.png, instability_by_L.png, unstable_directions.png")

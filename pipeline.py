@@ -88,13 +88,14 @@ def extract_candidates(scan_data, threshold=3.5, min_separation=0.02):
 # Period estimation
 # ---------------------------------------------------------------------------
 
-def estimate_period(params, parametrisation, L=None, T_max=16.0):
+def estimate_period(params, parametrisation, L=None, T_max=16.0,
+                    n_samples=2000):
     """Re-run return_proximity on a candidate to get T_guess.
 
     Returns (d_min, T_guess).
     """
     state0 = _build_state(params, parametrisation, L)
-    d_min, T_guess, _ = return_proximity(state0, T_max, n_samples=2000)
+    d_min, T_guess, _ = return_proximity(state0, T_max, n_samples=n_samples)
     return d_min, T_guess
 
 
@@ -102,7 +103,8 @@ def estimate_period(params, parametrisation, L=None, T_max=16.0):
 # Refinement
 # ---------------------------------------------------------------------------
 
-def refine_candidate(params, T_guess, parametrisation, L=None, verbose=False):
+def refine_candidate(params, T_guess, parametrisation, L=None, verbose=False,
+                     n_samples=2000):
     """Newton-refine a candidate orbit.
 
     Returns dict with params_refined, T, converged, d_min, state0.
@@ -121,7 +123,7 @@ def refine_candidate(params, T_guess, parametrisation, L=None, verbose=False):
         raise ValueError(f"Unknown parametrisation: {parametrisation}")
 
     # Compute residual d_min at refined parameters
-    d_min, _, _ = return_proximity(state0, T_r * 1.2, n_samples=2000)
+    d_min, _, _ = return_proximity(state0, T_r * 1.2, n_samples=n_samples)
 
     return {
         "params_refined": params_r,
@@ -569,7 +571,10 @@ def process_scan(scan_path, parametrisation, L=None, threshold=3.5,
                 break
             # Energy-normalised match: same family at different energy
             # Rescale both to E=-0.5, compare periods and words
-            if cls["word"] == prev.get("free_group_word", "") and cls["word"] != "?":
+            # Use canonical form so cyclic permutations are caught
+            prev_word = prev.get("free_group_word", "")
+            if (canonical_word(cls["word"]) == canonical_word(prev_word)
+                    and cls["word"] != "?" and prev_word != "?"):
                 try:
                     _, tf_new = rescale_to_energy(ref["state0"])
                     T_norm_new = ref["T"] * tf_new
