@@ -196,10 +196,22 @@ A JSON file (`floquet_catalogue.json`) containing Newton-refined parameters, Flo
 ## First BHH Scan Campaign (200×200, L=0.5, 1.0, 1.5)
 
 ### Scan results
-- **L=0.5**: 46 min, 0 candidates above threshold
-- **L=1.0**: 35 min, 41 candidates
-- **L=1.5**: ~40 min, TBD candidates
+- **L=0.5**: 46 min, 0 candidates above threshold. Either no orbits in this region or threshold too high.
+- **L=1.0**: 35 min, 41 candidates. Only 1 of first 40 refined successfully (b^47, T=9.30). 97% failure rate suggests most peaks are noise — threshold=3.5 may be too permissive, letting through peaks that aren't real orbits. Candidate 41 pending (slow variational integration).
+- **L=1.5**: ~40 min, 72 candidates. 7 refined successfully, all new (no Jankovic match). All pure b^k words with very long word lengths (57–196). L=1.5 is beyond Jankovic's range (max L=1.07), so all are genuinely new.
 - Machine: Mac Mini, 10-core Apple Silicon
+
+### High failure rate at L=1.0
+41 candidates extracted but ~97% failed Newton refinement. RPF analysis showed the problem is **not threshold** — the one successful orbit (b^47, RPF=3.68) was only #33 by RPF value, while candidates with RPF up to 4.83 all failed.
+
+**Root cause: edge artifacts at low `a`.** 36 of 41 candidates had `a < 0.12`, clustered at the lower boundary of the grid (a=0.05). Small `a` values in BHH parametrisation correspond to near-collision initial configurations. These produce spuriously low `d_min` (high RPF) because the trajectory passes close to its starting point by coincidence, not genuine periodicity. Newton correctly rejects them.
+
+The one success (b^47, a=0.091, c=-2.784, T=9.30) was also at low `a` but in the negative-c region where real orbits cluster (same region as the L=0.7 b^14 orbit).
+
+**Investigated mitigations:**
+- **Raise `a` lower bound**: Won't work. 20 Jankovic orbits have a < 0.1, down to a=0.069. Real orbits and noise overlap in low-a space.
+- **Edge filter (reject candidates within 2 grid cells of boundary)**: Only catches 10/41 noise candidates — most noise is at low a but not literally on the boundary. Not worth the complexity.
+- **Accepted outcome**: The parallel pipeline processes 41 candidates in minutes, so the noise has negligible cost. Newton correctly rejects all the junk. No code change needed.
 
 ### Newton divergence → OOM kill
 During pipeline processing of the L=1.0 scan, candidate 4 (params=(0.053, 0.796), T≈11.4) caused the process to be killed by the OS. The Newton-Raphson residual was growing (4.5e-5 → 4.6 → 22.8 → 64.5) — the starting guess was outside the basin of attraction, so each iteration sent parameters further into bad regions where the integrator took more and more steps, consuming memory until the OS killed it.
