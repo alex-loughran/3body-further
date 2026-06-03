@@ -10,8 +10,6 @@ Usage:
     python main.py process-scan FILE sym     Process symmetric scan candidates
     python main.py process-scan FILE bhh L   Process BHH scan candidates
     python main.py catalogue                 Floquet analysis of all known orbits
-    python main.py refine-scan FILE sym      Adaptive zoom on coarse scan peaks
-    python main.py refine-scan FILE bhh L    Adaptive zoom on coarse BHH scan peaks
     python main.py compare-floquet vx vy T   Compare standard vs compound Floquet
 """
 
@@ -329,27 +327,6 @@ if __name__ == "__main__":
         E = compute_energy(state0)
         print(f"Orbit: vx={vx}, vy={vy}, T={T}, E={E:.10f}\n")
         compare_floquet_methods(state0, T, verbose=True)
-    elif cmd == "refine-scan":
-        from scanner import adaptive_scan
-        if len(sys.argv) < 4:
-            print("Usage: python main.py refine-scan <scan.npz> symmetric")
-            print("       python main.py refine-scan <scan.npz> bhh <L>")
-            sys.exit(1)
-        scan_file = sys.argv[2]
-        ptype = sys.argv[3]
-        if ptype in ("symmetric", "sym"):
-            adaptive_scan(scan_file, SymmetricBuilder(),
-                          save_dir="refined_scans", T_max=8.0)
-        elif ptype == "bhh":
-            if len(sys.argv) < 5:
-                print("Usage: python main.py refine-scan <scan.npz> bhh <L>")
-                sys.exit(1)
-            L = float(sys.argv[4])
-            adaptive_scan(scan_file, BHHBuilder(L=L),
-                          save_dir="refined_scans", T_max=16.0)
-        else:
-            print(f"Unknown parametrisation: {ptype}")
-            sys.exit(1)
     else:
         print(f"Unknown command: {cmd}")
         print(__doc__)

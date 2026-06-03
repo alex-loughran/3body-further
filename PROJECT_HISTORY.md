@@ -237,7 +237,7 @@ python main.py catalogue                    Floquet analysis of all known orbits
 #### Medium priority
 7. ~~**Analyse the Floquet catalogue further**~~: Done. `analyse_catalogue.py` generates three plots: T* vs word length, stability landscape, T* by angular momentum. Shows clear T* word-length dependence for BHH single-letter families.
 8. ~~**Stability-topology correlation analysis**~~: Done. Pure-letter words (a^k, b^k) always unstable (0/75). Mixed-letter have 26% stability rate (9/35). All stable orbits are L=0 figure-eight family. Instability decreases with word length.
-9. ~~**Adaptive scan refinement**~~: Done. `adaptive_scan()` in scanner.py zooms into peaks from coarse scans at higher resolution. CLI: `python main.py refine-scan`.
+9. ~~**Adaptive scan refinement**~~: Removed. Newton-Raphson converges from coarse grid peaks directly; the intermediate zoom step added no practical value.
 10. ~~**Add orbit visualization to the pipeline**~~: Done. Pipeline auto-generates trajectory + shape sphere plots for each refined candidate. Saved to `<output>_plots/` directory.
 
 #### Lower priority

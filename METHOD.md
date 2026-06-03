@@ -92,9 +92,6 @@ The scanner evaluates the RPF at every point in a 2D parameter grid using `multi
 - T_max: 8.0 (symmetric), 16.0 (BHH — known orbits have periods up to 15.2)
 - n_samples: 800
 
-### 5.4 Adaptive refinement
-After a coarse scan, `adaptive_scan` identifies peaks above threshold, defines a zoomed region around each (±margin coarse cells), and re-scans at higher resolution (default 200×200 per region). This is a zoom tool for better Newton starting guesses, not a replacement for the full grid.
-
 ---
 
 ## 6. Candidate Extraction
