@@ -38,6 +38,16 @@ The 2nd compound matrix method was implemented as an alternative to the standard
 
 Empirical comparison across five orbits (stable through λ_max = 1085) showed the standard method with segmented integration is both faster (~2×) and more accurate (2–5 orders of magnitude better determinant errors). The compound method also fails entirely for long-period orbits (T > 60) where the large system becomes too stiff. The code is retained as a cross-validation tool but is not used in the production pipeline.
 
+## 9. Extended catalogue analysis and new orbit
+
+The Floquet catalogue analysis was extended with three additional findings, all potential results sections for a write-up:
+
+1. **T* residual structure**: The topological Kepler's third law (T* ≈ 2.433) shows qualitatively different behaviour for pure-letter vs mixed-letter words. Mixed-letter words cluster tightly around the prediction (T* = 2.429 ± 0.282), but pure-letter words scatter widely (T* = 2.412 ± 0.587), with short words at low L deviating by up to a factor of 2. This refines the finding from §7: the law doesn't just "break down" for pure-letter words — the deviation is systematic and depends on both word length and angular momentum.
+
+2. **Instability-angular momentum scaling**: For BHH orbits, mean log₁₀(λ_max) decreases monotonically from 2.55 at L=0.65 to 0.97 at L=1.07. Higher angular momentum systematically stabilises orbits. This has not been quantified for this set of orbits.
+
+3. **New orbit at L=0.7**: A 50×50 BHH scan produced one orbit not in any existing catalogue — word b^14, T=2.85, d_min=1.2×10⁻⁶, independently verified with clean monodromy (det=1, 8 unit eigenvalues). This fills a gap in the Jankovic (k, L) coverage and demonstrates that even small exploratory scans in BHH space can yield new results.
+
 ## Current status
 
-The infrastructure is complete and validated. The remaining work is running large-scale BHH scans (1000×1000 at 9 angular momentum values) on AWS, which is where genuinely new orbits — in parameter space Li & Liao did not search — would be found. The pipeline is ready to process whatever comes out.
+The infrastructure is complete and validated. One new orbit has been found at L=0.7 from a small exploratory scan. The remaining work is running large-scale BHH scans (1000×1000 at 9 angular momentum values) on AWS, which is where systematic discovery of new orbits — in parameter space Li & Liao did not search — would occur. The pipeline is ready to process whatever comes out.

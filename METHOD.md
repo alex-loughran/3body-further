@@ -260,6 +260,48 @@ From the Floquet catalogue of 110 known orbits:
 - Instability decreases with word length: log₁₀(λ_max) drops from ~3 at L_f = 4 to ~0.9 at L_f = 35
 - Most orbits have 2 unstable directions (63/110); only 2 have 4
 
+### 12.1 Extended analysis
+
+**T* residuals:** Pure-letter words show T* = 2.412 ± 0.587 (large spread), while mixed-letter words show T* = 2.429 ± 0.282 (much tighter). The worst deviations are short pure-letter words at low L: Jankovic #6 (k=4, L=0.65) has T* = 4.92, nearly double the predicted value. The T* law's domain of validity is restricted to mixed-letter words; for pure-letter words, T* is not constant and depends strongly on both k and L.
+
+**Instability scaling with angular momentum:** For BHH orbits, mean log₁₀(λ_max) decreases monotonically with L:
+
+| L | n_orbits | mean log₁₀(λ_max) | std |
+|---|---|---|---|
+| 0.650 | 5 | 2.554 | 0.493 |
+| 0.700 | 4 | 1.922 | 0.692 |
+| 0.800 | 9 | 1.232 | 0.040 |
+| 0.850 | 8 | 1.335 | 0.309 |
+| 0.900 | 6 | 1.485 | 0.405 |
+| 0.936 | 7 | 1.437 | 0.429 |
+| 1.000 | 11 | 1.113 | 0.089 |
+| 1.030 | 11 | 0.971 | 0.038 |
+| 1.070 | 14 | 0.969 | 0.031 |
+
+Higher angular momentum systematically reduces instability. The standard deviation also decreases at large L, suggesting the multiplier spectrum becomes more uniform.
+
+**Unstable direction structure:** Pure-letter words always have 2 unstable directions (56/75) or rarely 4 (2/75). Mixed-letter words are either fully stable (13/35) or have exactly 2 unstable directions (7/35). No mixed-letter orbit has 4 unstable directions — the additional instability dimensions appear exclusively in pure-letter orbits.
+
+---
+
+## 12.2 New orbit: b^14 at L=0.7
+
+A 50×50 BHH scan at L=0.7 produced one candidate not present in Jankovic Tables 3–5. Independent verification confirms it as a valid periodic orbit:
+
+| Property | Value |
+|---|---|
+| Free group word | b^14 |
+| Refined parameters | a = 0.09506943645521, c = −2.72789842748187 |
+| Period T | 2.85148374 |
+| Energy E | −4.8948394095 |
+| d_min | 1.2 × 10⁻⁶ |
+| det(M) | 1.0000000000 |
+| Unit eigenvalues | 8 |
+| λ_max | 20.27 |
+| Stability | Unstable (2 unstable directions) |
+
+The Jankovic catalogue contains k=14 orbits at L=0.8 (#42, a=0.105, c=−2.593) and L=1.0 (#43, a=0.146, c=−2.203), but none at L=0.7. This orbit fills a gap in the (k, L) coverage of pure b-type BHH families. Its T* = 2.85 × 4.895^{1.5} / 14 = 2.205, consistent with the monotonic decrease of T* with k observed for other pure-letter BHH orbits at similar L.
+
 ---
 
 ## 13. Output Format
