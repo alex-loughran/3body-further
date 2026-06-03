@@ -201,6 +201,17 @@ A JSON file (`floquet_catalogue.json`) containing Newton-refined parameters, Flo
 - **L=1.5**: ~40 min, 72 candidates. 7 refined successfully, all new (no Jankovic match). All pure b^k words with very long word lengths (57–196). L=1.5 is beyond Jankovic's range (max L=1.07), so all are genuinely new.
 - Machine: Mac Mini, 10-core Apple Silicon
 
+### All new orbits are pure b^k — topological bias in BHH parametrisation?
+Every orbit found across all three L values is a pure `b^k` word: b^14 (L=0.7), b^47 (L=1.0), and b^57 to b^196 (L=1.5). No mixed words (`aAbB`, etc.), no `a`-type generators at all.
+
+**Likely explanation: geometric bias of the BHH slice.** The BHH parametrisation fixes collinear Jacobi positions, and at a given L the `b`-type syzygies (one particular body passing between the other two) are the natural topology for those initial conditions. Mixed words require the bodies to swap roles mid-orbit, which may need initial conditions outside the BHH (a, c) slice entirely, or that occupy a much thinner region of the grid that even 200×200 can't resolve.
+
+**Word length scales with L.** b^14 at L=0.7, b^47 at L=1.0, b^57–b^196 at L=1.5. This is consistent with the trend already visible in the Jankovic catalogue (pre-scan analysis item 4 found instability drops monotonically with L — longer, less unstable orbits at higher L).
+
+**What the 500×500 Jankovic L-value scans should clarify:**
+- If known mixed-word Jankovic orbits are recovered at 500×500, then mixed words exist in BHH space but need higher resolution to detect (narrower peaks).
+- If they are not recovered, it would suggest a genuine limitation of the BHH parametrisation — the 2D (a, c) slice at fixed L preferentially accesses one topological class. This connects to the open question in the project: "finding new parametrisations that access different orbit families."
+
 ### High failure rate at L=1.0
 41 candidates extracted but ~97% failed Newton refinement. RPF analysis showed the problem is **not threshold** — the one successful orbit (b^47, RPF=3.68) was only #33 by RPF value, while candidates with RPF up to 4.83 all failed.
 
