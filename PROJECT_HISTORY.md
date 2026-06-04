@@ -239,6 +239,31 @@ The `adaptive_scan` function zoomed into peaks from a coarse scan at higher reso
 
 ---
 
+## Second BHH Scan Campaign (500×500, Jankovic L values)
+
+Machine: Mac Mini, 10-core Apple Silicon. ~3.5–4 hours per scan.
+
+### Results by L value
+| L | Candidates | Refined | Matched | New | Notes |
+|---|-----------|---------|---------|-----|-------|
+| 0.65 | 4 | 2 | 0 | 2 | b^22, b^41. No Jankovic match (5 known at this L). |
+| 0.7 | 1 | 1 | 0 | 1 | b^26. Separate from b^14 found at 50×50. |
+| 0.8 | 24 | 13 | 2 | 11 | Matched Jankovic #34 (b^11) and #10 (b^6). First cross-reference validation. 11 new orbits, b^6 to b^374. |
+| 0.85 | — | — | — | — | Running |
+| 0.9 | — | — | — | — | Pending |
+| 0.935 | — | — | — | — | Pending |
+| 1.0 | — | — | — | — | Pending |
+| 1.03 | — | — | — | — | Pending |
+| 1.07 | — | — | — | — | Pending |
+
+### Key observations so far
+- **Pipeline validated**: L=0.8 correctly matched 2 known Jankovic orbits, confirming the scan → refine → cross-reference chain works end-to-end on real data.
+- **Pure b^k bias persists**: All orbits across all L values are still pure b^k. No mixed words found even at 500×500. Increasingly likely this is a genuine property of the BHH slice, not a resolution issue.
+- **500×500 finds more**: L=0.8 found 11 new orbits at 500×500 vs what 200×200 would likely have missed. Higher resolution is paying off.
+- **Jankovic recovery rate**: Only 2 of the known Jankovic orbits at L=0.8 (9 total) were matched. The other 7 may be mixed-word orbits that don't produce b^k peaks, or may sit in regions the scanner can detect but Newton can't converge from.
+
+---
+
 ## Files in the project
 
 | File | Lines | Purpose |
