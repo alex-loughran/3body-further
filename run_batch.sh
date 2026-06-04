@@ -13,3 +13,15 @@ for L in 0.8 0.85 0.9 0.935 1.0 1.03 1.07; do
 done
 
 echo "=== All scans complete ==="
+
+# Push results to GitHub
+echo "=== Pushing results to GitHub ==="
+git add -f scan_bhh_L*_500x500.npz
+git add -f scan_bhh_L*_500x500_candidates.json
+git add -f scan_bhh_L*_500x500_candidates_plots/
+git add -f scan_bhh_L*_200x200.npz
+git add -f scan_bhh_L*_200x200_candidates.json
+git add -f scan_bhh_L*_200x200_candidates_plots/
+git commit -m "Add BHH scan results: 500x500 at 9 Jankovic L values + 200x200 at L=0.5, 1.0, 1.5"
+git push
+echo "=== Done ==="
