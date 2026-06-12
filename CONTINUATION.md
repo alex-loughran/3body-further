@@ -52,6 +52,25 @@ While Mac Mini results remain inaccessible, all four Phase 1 tasks were complete
 - Files: bk_bias.py, bk_bias_census_report.txt, bk_bias_census.npz/.png,
   bk_bias_geometry.png.
 
+### STABLE ORBIT AT L≠0 — CONFIRMED (headline result)
+
+- The Jankovic #2 (b^3) family has a linearly stable window
+  **L ∈ [0.83050, 0.83095]** (width 4.5e-4): all 12 multipliers on the unit
+  circle, |λ|_max = 1.000000 across 10 independently Newton-refined points
+  with accurate segmented monodromy (5e-5 L-steps marched from converged
+  curve points — do NOT Newton from interpolated guesses near the window,
+  the near-singular Jacobian hangs).
+- Multiplier route: real pair collides at +1 (L≈0.8296) → complex Krein
+  quartet just off circle, |λ|≈1.02 (L≈0.8300–0.8304) → quartet re-lands on
+  circle ≈0.83047 → STABLE → pair exits through −1 (period doubling) ≈0.83098.
+- Representative orbit: a=0.246486, c=−2.035290, L=0.830800, T=4.880107,
+  E=−1.5766, word b^3. Plot: stable_b3_L0.8308.png.
+- All previously known stable orbits are L=0 figure-eight family (per our
+  Floquet catalogue of 110 orbits) → likely first stable L≠0 orbit.
+- Follow-ups: KAM/nonlinear stability check (long integration, e.g. 1000T);
+  the period-doubling exit at L≈0.83098 spawns a period-doubled branch —
+  trace it; check other families' dips for more windows.
+
 ### Continuation in L (continuation.py) — built and producing results
 
 - Pseudo-arclength continuation of BHH families in (a, c, T, L). Reuses

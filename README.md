@@ -45,11 +45,18 @@ curves in (a, c, T, L) by pseudo-arclength continuation — no grid, no lottery.
 First results: Jankovic #1 and #2 (both b^3) are *distinct* families with
 folds at L≈0.926 and L≈0.757; their overlap hosts four b^3 orbits per L where
 the catalogue knew at most two; verified b^3 orbits exist at L=0.8/0.9 where
-the tables have no k=3 entry. The #2 family passes through a deep stability
-dip at L≈0.830 where all twelve Floquet multipliers sit on the unit circle —
-a candidate (narrow) stability window, currently being verified. All known
-stable three-body orbits to date are L=0 figure-eight relatives, so a
-confirmed stable orbit at L≠0 would be new.
+the tables have no k=3 entry. **A linearly stable orbit at L≠0.** Following the #2 family through its
+stability dip and resolving the multiplier structure at fine resolution
+(`dip_trace.py`) found a genuine stable window: **L ∈ [0.83050, 0.83095]**,
+where all twelve Floquet multipliers sit on the unit circle
+(|λ|_max = 1.000000 across ten independently refined points, accurate
+segmented monodromy). The window is bounded below by a Krein quartet
+re-landing on the circle and above by period-doubling exit through −1.
+Representative orbit: a=0.246486, c=−2.035290, L=0.830800, T=4.880107,
+E=−1.5766, word b³. Every previously known linearly stable orbit (checked
+across all 110 published orbits via the Floquet catalogue) is an L=0
+figure-eight relative — this appears to be the first at L≠0, found by
+continuation at parameters no grid scan visited.
 
 ## How it works
 
