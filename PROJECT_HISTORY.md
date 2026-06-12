@@ -260,7 +260,7 @@ Machine: Mac Mini, 10-core Apple Silicon. ~3.5–4 hours per scan.
 - **Pipeline validated**: L=0.8 correctly matched 2 known Jankovic orbits, confirming the scan → refine → cross-reference chain works end-to-end on real data.
 - **Pure b^k bias persists**: All orbits across all L values are still pure b^k. No mixed words found even at 500×500. Increasingly likely this is a genuine property of the BHH slice, not a resolution issue.
 - **500×500 finds more**: L=0.8 found 11 new orbits at 500×500 vs what 200×200 would likely have missed. Higher resolution is paying off.
-- **Jankovic recovery rate**: Only 2 of the known Jankovic orbits at L=0.8 (9 total) were matched. The other 7 may be mixed-word orbits that don't produce b^k peaks, or may sit in regions the scanner can detect but Newton can't converge from.
+- **Jankovic recovery rate explained**: Only 2 of 9 known Jankovic orbits at L=0.8 were matched. Investigation showed all 9 are pure b^k and have RPF ~6 at exact parameters — but peaks are extremely sharp, dropping from ~6 to below threshold within dc ~0.005. At 500×500 (dc=0.015), a peak must land within ~1/3 of a grid cell to be detected. The 2 matches (#10 and #34) had a grid point within dc < 0.001; the 7 misses had dc > 0.004. Detection is a geometric lottery at finite resolution, not a pipeline failure. 1000×1000 would roughly double recovery.
 
 ---
 
