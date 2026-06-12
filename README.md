@@ -18,6 +18,39 @@ Scans 2D parameter spaces, refines candidates to machine precision with Newton-R
 
 Additional L values (0.85, 0.9, 0.935, 1.03, 1.07) are currently scanning.
 
+## Current work: why scans miss orbits, and what to do instead
+
+Three results from analysing the search methodology itself:
+
+**Detection is a geometric lottery.** Measuring the RPF peak widths around all
+75 Jankovic orbits (at the campaign's own scan settings) shows peaks are far
+narrower than any affordable grid spacing. A simple model — a peak is found
+only if a grid point lands inside it — correctly predicts the observed
+recovery rates (e.g. predicted 1.17 recoveries at L=0.8, observed 2; predicted
+~0 at L=0.65/0.7, observed 0). Reaching 80% recovery would need a ~8300x8300
+grid, ~300x the current compute. Counterintuitively, peak width *grows* with
+word length, so the shortest words are the hardest to find. (`peak_sharpness.py`)
+
+**The pure-b^k bias is dynamical selection, not a topological restriction.**
+A syzygy census of ~30,000 trajectories shows the BHH (a, c) plane splits into
+ordered single-winding domains — where every known periodic orbit lives —
+separated by a chaotic zone where trajectories mix windings but nothing
+detectable closes up. The letter (a vs b) is set by the angular momentum split
+the parametrisation hard-codes: L_rho = a*c to the binary, L_lam = L - a*c to
+the outer body. The symmetric L=0 plane is the inverse case (91% mixed),
+which is why it yields mixed words. (`bk_bias.py`)
+
+**Continuation replaces scanning.** `continuation.py` traces orbit families as
+curves in (a, c, T, L) by pseudo-arclength continuation — no grid, no lottery.
+First results: Jankovic #1 and #2 (both b^3) are *distinct* families with
+folds at L≈0.926 and L≈0.757; their overlap hosts four b^3 orbits per L where
+the catalogue knew at most two; verified b^3 orbits exist at L=0.8/0.9 where
+the tables have no k=3 entry. The #2 family passes through a deep stability
+dip at L≈0.830 where all twelve Floquet multipliers sit on the unit circle —
+a candidate (narrow) stability window, currently being verified. All known
+stable three-body orbits to date are L=0 figure-eight relatives, so a
+confirmed stable orbit at L≠0 would be new.
+
 ## How it works
 
 ### 1. Parameter space scan
@@ -89,6 +122,9 @@ python main.py refine-bhh 0.0951 -2.7279 0.7 2.851
 | `catalogue.py` | SQLite orbit database: ingestion from result JSONs, query API |
 | `reproduce.py` | Reproduction suite: 17 known orbits validated end-to-end |
 | `peak_sharpness.py` | RPF peak width measurement + grid detection-rate model |
+| `bk_bias.py` | Geometric analysis of the pure-b^k bias: IC geometry + syzygy census |
+| `continuation.py` | Pseudo-arclength continuation of orbit families in L |
+| `dip_trace.py` | Fine-resolution stability analysis of the L≈0.83 dip |
 | `ll_data.py` | Li & Liao 695-family data loader |
 | `analyse_catalogue.py` | Floquet catalogue analysis and plots |
 
