@@ -58,6 +58,8 @@ across all 110 published orbits via the Floquet catalogue) is an L=0
 figure-eight relative — this appears to be the first at L≠0, found by
 continuation at parameters no grid scan visited.
 
+![Stable b³ orbit at L=0.8308](stable_b3_L0.8308.png)
+
 ## How it works
 
 ### 1. Parameter space scan
