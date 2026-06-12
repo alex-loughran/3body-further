@@ -52,6 +52,26 @@ While Mac Mini results remain inaccessible, all four Phase 1 tasks were complete
 - Files: bk_bias.py, bk_bias_census_report.txt, bk_bias_census.npz/.png,
   bk_bias_geometry.png.
 
+### Continuation in L (continuation.py) — built and producing results
+
+- Pseudo-arclength continuation of BHH families in (a, c, T, L). Reuses
+  floquet._monodromy_jacobian with a 3-param builder so ∂F/∂L comes from the
+  same variational integration. Scaled tangent/arclength algebra
+  (SCALES = [0.2, 1, 2, 0.2]), adaptive step, fold + bifurcation detection.
+- `python continuation.py trace --orbit NR | --start A C T L` ;
+  `python continuation.py validate` (traces #1, independently verifies samples).
+- **First results:** Jankovic #1 and #2 are DISTINCT b^3 families.
+  #1's family: L ∈ [~0.59, 0.926], fold at L≈0.926; passes through no other
+  catalogue entry; fills the b^3 gap at L=0.8/0.9 (e.g. verified b^3 at
+  L=0.80: a=0.5667, c=-1.2102, T=7.1096, d_min~2e-7).
+  #2's family: fold at L≈0.757, continues past L=1.0 (trace hit bound),
+  6 stability changes (n_unstable 2-4) — bifurcation candidates.
+  In the overlap L ∈ [0.757, 0.926] there are FOUR b^3 orbits per L.
+- Each family trace ≈ 2-4 min serial. Curve points are genuine orbits
+  (|F| < 1e-9; spot-checked RPF d_min ~ 1e-7, words correct).
+- Next: trace all 75 Jankovic families (parallel batch), map folds/bifurcations
+  across the catalogue; then attempt mixed-word continuation from L=0.
+
 ## Where we left off (2026-06-12)
 
 ### Mac Mini status
