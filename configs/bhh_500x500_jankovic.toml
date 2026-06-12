@@ -1,0 +1,12 @@
+# The 500x500 BHH campaign at the 9 Jankovic L values (started 2026-06 on
+# the Mac Mini via run_batch.sh — this config reproduces those settings).
+name = "bhh_500x500_jankovic"
+parametrisation = "bhh"
+n_grid = 500
+row_range = [0.05, 0.6]     # a
+col_range = [-3.5, 4.0]     # c
+T_max = 16.0
+n_samples = 800
+t_min_frac = 0.15
+threshold = 3.5
+L_values = [0.65, 0.7, 0.8, 0.85, 0.9, 0.935, 1.0, 1.03, 1.07]

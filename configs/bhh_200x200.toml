@@ -1,0 +1,12 @@
+# First BHH campaign: 200x200 exploratory scans (L=0.5 found nothing;
+# L=1.0 found b^47; L=1.5 found b^57 through b^196).
+name = "bhh_200x200"
+parametrisation = "bhh"
+n_grid = 200
+row_range = [0.05, 0.6]     # a
+col_range = [-3.5, 4.0]     # c
+T_max = 16.0
+n_samples = 800
+t_min_frac = 0.15
+threshold = 3.5
+L_values = [0.5, 1.0, 1.5]

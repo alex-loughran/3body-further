@@ -1,0 +1,11 @@
+# Symmetric (vx, vy) plane scan at 200x200 — L=0 by construction.
+# Matches the main.py scan-symmetric defaults.
+name = "symmetric_200x200"
+parametrisation = "symmetric"
+n_grid = 200
+row_range = [0.01, 0.6]     # vx
+col_range = [0.01, 0.6]     # vy
+T_max = 8.0
+n_samples = 800
+t_min_frac = 0.15
+threshold = 3.5

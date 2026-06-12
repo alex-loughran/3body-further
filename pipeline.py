@@ -516,6 +516,7 @@ def _process_one_candidate(args):
             "stability": cls["stability"],
             "valid": cls["valid"],
             "sol": cls["sol"],
+            "multipliers": cls["multipliers"],
         },
     })
 
@@ -673,6 +674,8 @@ def process_scan(scan_path, parametrisation, L=None, threshold=3.5,
             "determinant": cls["stability"]["determinant"],
             "n_unit_eigenvalues": cls["stability"]["n_unit"],
             "monodromy_valid": cls["valid"],
+            "multiplier_magnitudes": sorted(
+                float(abs(m)) for m in cls["multipliers"]),
             "match": xref,
             "is_new": xref is None,
         }

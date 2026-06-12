@@ -54,6 +54,20 @@ python main.py scan-bhh 0.8 500
 # Process scan results through the full pipeline
 python main.py process-scan scan_bhh_L0.8_500x500.npz bhh 0.8
 
+# Run a reproducible campaign from a config file (scan + process per L)
+python main.py campaign configs/bhh_500x500_jankovic.toml 0.8
+
+# Reproduction suite: 17 known orbits end-to-end (pre-scan sanity check)
+python reproduce.py            # or --quick for a 5-orbit subset
+
+# Orbit catalogue database (rebuilt from JSON result files)
+python catalogue.py ingest
+python catalogue.py summary
+python catalogue.py query --L 0.8 --new
+
+# Peak sharpness / detection-rate analysis across known Jankovic orbits
+python peak_sharpness.py
+
 # Floquet analysis for a specific orbit
 python main.py floquet 0.3471 0.5327 6.325
 
@@ -71,6 +85,10 @@ python main.py refine-bhh 0.0951 -2.7279 0.7 2.851
 | `floquet.py` | Floquet analysis: variational equations, monodromy matrix, multiplier extraction, Newton-Raphson refinement |
 | `pipeline.py` | End-to-end candidate pipeline: scan -> refine -> classify -> cross-reference -> JSON |
 | `main.py` | CLI entry point |
+| `config.py` + `configs/` | TOML campaign configs — reproducible scan settings per campaign |
+| `catalogue.py` | SQLite orbit database: ingestion from result JSONs, query API |
+| `reproduce.py` | Reproduction suite: 17 known orbits validated end-to-end |
+| `peak_sharpness.py` | RPF peak width measurement + grid detection-rate model |
 | `ll_data.py` | Li & Liao 695-family data loader |
 | `analyse_catalogue.py` | Floquet catalogue analysis and plots |
 

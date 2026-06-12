@@ -9,6 +9,8 @@ Usage:
     python main.py refine-bhh a c L T        Newton-refine a BHH orbit
     python main.py process-scan FILE sym     Process symmetric scan candidates
     python main.py process-scan FILE bhh L   Process BHH scan candidates
+    python main.py campaign FILE [L]         Run a campaign from a configs/*.toml
+                                             file (scan + process; optional single L)
     python main.py catalogue                 Floquet analysis of all known orbits
     python main.py compare-floquet vx vy T   Compare standard vs compound Floquet
 """
@@ -315,6 +317,13 @@ if __name__ == "__main__":
         else:
             print(f"Unknown parametrisation: {ptype}")
             sys.exit(1)
+    elif cmd == "campaign":
+        from config import run_campaign
+        if len(sys.argv) < 3:
+            print("Usage: python main.py campaign <config.toml> [L]")
+            sys.exit(1)
+        L_only = float(sys.argv[3]) if len(sys.argv) > 3 else None
+        run_campaign(sys.argv[2], L_only=L_only)
     elif cmd == "catalogue":
         catalogue_cmd()
     elif cmd == "compare-floquet":
