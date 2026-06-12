@@ -32,6 +32,26 @@ While Mac Mini results remain inaccessible, all four Phase 1 tasks were complete
   confounded (high-k orbits live at high L); per-L fits show the k-dependence
   cleanly (e.g. L=0.8: w_c slope +0.104/k).
 
+### b^k bias analysis (bk_bias.py) — VERDICT: dynamical selection, not kinematic
+
+- Letters are puncture windings: b = 1-2 collision puncture, a = 2-3. BHH ICs
+  start on the shape-sphere equator between exactly those punctures; the
+  parametrisation fixes the angular momentum split L_rho = a*c, L_lam = L - a*c.
+  All 75 Jankovic orbits are pure single-letter, split exactly by sign(c):
+  c<0 → b^k (70, L_rho ≈ -0.3), c>0 → a^k (5, all L=0.65, L_lam ≈ 0).
+- Syzygy census (100×100, scan settings, L=0.65/0.8/1.0 + symmetric control):
+  mixed-puncture trajectories are ABUNDANT in BHH space (33-44% of bound
+  trajectories visit all three punctures), so the slice can reach mixed
+  topologies — the bias is not kinematic. But the plane splits into a coherent
+  pure-b domain (c<0), a coherent pure-a band (large c>0), and a chaotic sea
+  between them. Every Jankovic orbit sits inside a pure domain. The symmetric
+  control is the inverse: 91% mixed-all, hence mixed words at L=0.
+- Unified story with peak sharpness: mixed-word periodic orbits presumably
+  exist in the chaotic sea but are violently unstable → RPF peaks too sharp to
+  detect. Grid scans in BHH space can structurally only find pure-letter orbits.
+- Files: bk_bias.py, bk_bias_census_report.txt, bk_bias_census.npz/.png,
+  bk_bias_geometry.png.
+
 ## Where we left off (2026-06-12)
 
 ### Mac Mini status

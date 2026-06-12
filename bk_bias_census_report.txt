@@ -1,0 +1,51 @@
+
+=== Census: bhh_L0.65 (100x100, 8 workers) ===
+  500/10000 [263s, ~5000s left]  1000/10000 [428s, ~3851s left]  1500/10000 [551s, ~3121s left]  2000/10000 [637s, ~2548s left]  2500/10000 [701s, ~2104s left]  3000/10000 [749s, ~1747s left]  3500/10000 [789s, ~1466s left]  4000/10000 [825s, ~1237s left]  4500/10000 [861s, ~1053s left]  5000/10000 [888s, ~888s left]  5500/10000 [911s, ~746s left]  6000/10000 [936s, ~624s left]  6500/10000 [960s, ~517s left]  7000/10000 [981s, ~420s left]  7500/10000 [998s, ~333s left]  8000/10000 [1018s, ~254s left]  8500/10000 [1035s, ~183s left]  9000/10000 [1055s, ~117s left]  9500/10000 [1070s, ~56s left]  10000/10000 [1089s, ~0s left]  done in 1089s                              
+  bhh_L0.65: 7145/10000 integrated
+    no transitions               105 (1.5% of valid)
+    pure 1-2 (b-type)           1981 (27.7% of valid)
+    pure 2-3 (a-type)            535 (7.5% of valid)
+    mixed 12+23                  510 (7.1% of valid)
+    pure 1-3                     274 (3.8% of valid)
+    mixed 12+13                  309 (4.3% of valid)
+    mixed 23+13                  291 (4.1% of valid)
+    mixed all                   3140 (43.9% of valid)
+
+=== Census: bhh_L0.8 (100x100, 8 workers) ===
+  500/10000 [315s, ~5988s left]  1000/10000 [455s, ~4099s left]  1500/10000 [545s, ~3090s left]  2000/10000 [611s, ~2442s left]  2500/10000 [670s, ~2010s left]  3000/10000 [713s, ~1663s left]  3500/10000 [755s, ~1401s left]  4000/10000 [796s, ~1194s left]  4500/10000 [831s, ~1016s left]  5000/10000 [863s, ~863s left]  5500/10000 [888s, ~727s left]  6000/10000 [912s, ~608s left]  6500/10000 [940s, ~506s left]  7000/10000 [959s, ~411s left]  7500/10000 [979s, ~326s left]  8000/10000 [1001s, ~250s left]  8500/10000 [1017s, ~180s left]  9000/10000 [1035s, ~115s left]  9500/10000 [1048s, ~55s left]  10000/10000 [1063s, ~0s left]  done in 1064s                              
+  bhh_L0.8: 7101/10000 integrated
+    no transitions               117 (1.6% of valid)
+    pure 1-2 (b-type)           2618 (36.9% of valid)
+    pure 2-3 (a-type)            827 (11.6% of valid)
+    mixed 12+23                  477 (6.7% of valid)
+    pure 1-3                     183 (2.6% of valid)
+    mixed 12+13                  248 (3.5% of valid)
+    mixed 23+13                  235 (3.3% of valid)
+    mixed all                   2396 (33.7% of valid)
+
+=== Census: bhh_L1.0 (100x100, 8 workers) ===
+  500/10000 [306s, ~5820s left]  1000/10000 [447s, ~4027s left]  1500/10000 [542s, ~3071s left]  2000/10000 [605s, ~2420s left]  2500/10000 [659s, ~1977s left]  3000/10000 [700s, ~1634s left]  3500/10000 [732s, ~1360s left]  4000/10000 [763s, ~1145s left]  4500/10000 [793s, ~969s left]  5000/10000 [816s, ~816s left]  5500/10000 [837s, ~685s left]  6000/10000 [857s, ~571s left]  6500/10000 [880s, ~474s left]  7000/10000 [900s, ~386s left]  7500/10000 [920s, ~307s left]  8000/10000 [938s, ~234s left]  8500/10000 [955s, ~169s left]  9000/10000 [970s, ~108s left]  9500/10000 [984s, ~52s left]  10000/10000 [1001s, ~0s left]  done in 1001s                              
+  bhh_L1.0: 6995/10000 integrated
+    no transitions               122 (1.7% of valid)
+    pure 1-2 (b-type)           3495 (50.0% of valid)
+    pure 2-3 (a-type)            890 (12.7% of valid)
+    mixed 12+23                  322 (4.6% of valid)
+    pure 1-3                     160 (2.3% of valid)
+    mixed 12+13                  212 (3.0% of valid)
+    mixed 23+13                  196 (2.8% of valid)
+    mixed all                   1598 (22.8% of valid)
+
+=== Census: symmetric (100x100, 8 workers) ===
+  500/10000 [37s, ~695s left]  1000/10000 [68s, ~612s left]  1500/10000 [97s, ~550s left]  2000/10000 [124s, ~496s left]  2500/10000 [153s, ~458s left]  3000/10000 [179s, ~418s left]  3500/10000 [213s, ~396s left]  4000/10000 [243s, ~364s left]  4500/10000 [273s, ~334s left]  5000/10000 [302s, ~302s left]  5500/10000 [328s, ~268s left]  6000/10000 [354s, ~236s left]  6500/10000 [382s, ~206s left]  7000/10000 [406s, ~174s left]  7500/10000 [428s, ~143s left]  8000/10000 [452s, ~113s left]  8500/10000 [477s, ~84s left]  9000/10000 [499s, ~55s left]  9500/10000 [519s, ~27s left]  10000/10000 [538s, ~0s left]  done in 538s                              
+  symmetric: 9899/10000 integrated
+    no transitions               117 (1.2% of valid)
+    pure 1-2 (b-type)            115 (1.2% of valid)
+    pure 2-3 (a-type)             60 (0.6% of valid)
+    mixed 12+23                   10 (0.1% of valid)
+    pure 1-3                      44 (0.4% of valid)
+    mixed 12+13                    4 (0.0% of valid)
+    mixed 23+13                  551 (5.6% of valid)
+    mixed all                   8998 (90.9% of valid)
+
+Saved: bk_bias_census.npz
+Plot saved: bk_bias_census.png
