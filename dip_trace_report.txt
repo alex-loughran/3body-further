@@ -1,0 +1,35 @@
+=== Fine trace of #2 family dip, L in [0.79, 0.86], ds=0.004 ===
+  Tracing family from (a=0.2474, c=-2.0301, T=4.8779, L=0.8300)
+  -> direction 1
+    step 10: L=0.8261 a=0.2520 c=-2.0045 T=4.8666 λ_max=5.59 [ds=0.004]
+    step 20: L=0.8223 a=0.2567 c=-1.9791 T=4.8553 λ_max=10.8 [ds=0.004]
+    step 30: L=0.8186 a=0.2615 c=-1.9538 T=4.8440 λ_max=15.7 [ds=0.004]
+    step 40: L=0.8148 a=0.2664 c=-1.9287 T=4.8326 λ_max=20.2 [ds=0.004]
+    step 50: L=0.8112 a=0.2714 c=-1.9038 T=4.8211 λ_max=24.3 [ds=0.004]
+    step 60: L=0.8076 a=0.2764 c=-1.8791 T=4.8096 λ_max=28.1 [ds=0.004]
+    step 70: L=0.8041 a=0.2816 c=-1.8546 T=4.7980 λ_max=31.4 [ds=0.004]
+    step 80: L=0.8007 a=0.2868 c=-1.8303 T=4.7863 λ_max=34.4 [ds=0.004]
+    step 90: L=0.7973 a=0.2921 c=-1.8061 T=4.7745 λ_max=37 [ds=0.004]
+    step 100: L=0.7941 a=0.2974 c=-1.7822 T=4.7627 λ_max=39.2 [ds=0.004]
+    step 110: L=0.7909 a=0.3029 c=-1.7584 T=4.7508 λ_max=41.1 [ds=0.004]
+    stop: L bound reached (L=0.7900)
+  -> direction 2
+    step 10: L=0.8339 a=0.2428 c=-2.0560 T=4.8890 λ_max=5.98 [ds=0.004]
+    step 20: L=0.8379 a=0.2384 c=-2.0820 T=4.9002 λ_max=12.2 [ds=0.004]
+    step 30: L=0.8419 a=0.2340 c=-2.1082 T=4.9112 λ_max=18.6 [ds=0.004]
+    step 40: L=0.8459 a=0.2297 c=-2.1346 T=4.9223 λ_max=25.3 [ds=0.004]
+    step 50: L=0.8500 a=0.2254 c=-2.1612 T=4.9333 λ_max=32 [ds=0.004]
+    step 60: L=0.8541 a=0.2213 c=-2.1879 T=4.9442 λ_max=38.9 [ds=0.004]
+    step 70: L=0.8582 a=0.2172 c=-2.2149 T=4.9551 λ_max=45.7 [ds=0.004]
+    stop: L bound reached (L=0.8603)
+
+  187 curve points traced
+  Accurate Floquet on all points (8 workers)...
+  done in 14s (187 points analysed)
+
+=== Verdict ===
+  lambda_max range: 1.000000 (at L=0.83080) to 48.3478
+  STABLE WINDOW FOUND: 2 points, L in [0.82963, 0.83080]
+  most stable point: a=0.246486 c=-2.035290 T=4.880107 L=0.830800 λ_max=1.000000
+  Saved: dip_trace.json
+  Plot: dip_trace.png
