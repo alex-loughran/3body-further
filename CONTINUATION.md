@@ -52,7 +52,21 @@ While Mac Mini results remain inaccessible, all four Phase 1 tasks were complete
 - Files: bk_bias.py, bk_bias_census_report.txt, bk_bias_census.npz/.png,
   bk_bias_geometry.png.
 
-### STABLE ORBIT AT L≠0 — CONFIRMED (headline result)
+### Nonlinear stability of the stable orbit — STILL OPEN (linear only)
+
+- Two long-time probes (stability_check.py 5000 periods; lyapunov.py 2000)
+  are both INCONCLUSIVE. Distance metric saturates (libration / confined
+  chaos / integrator drift all at 1e-3..1e-2). Lyapunov hits a 1/t
+  renormalisation floor (~0.0013 by n=2000) that swallows every case,
+  including the periodic orbit itself and the λ≈1.99 unstable control;
+  it does cross the control's true Floquet rate 0.141 near n=10 first.
+- No escape observed in 5000 periods even at 100× perturbation — weak
+  positive sign, not proof (unstable neighbours also stay confined).
+- ACTION (task #11): floor-free test — shadow-orbit (two-trajectory)
+  Lyapunov OR surface-of-section rotation number. Until then, the claim
+  is "LINEARLY stable", not "stable". Do not overclaim in the email.
+
+### STABLE ORBIT AT L≠0 — linearly confirmed (headline result)
 
 - The Jankovic #2 (b^3) family has a linearly stable window
   **L ∈ [0.83050, 0.83095]** (width 4.5e-4): all 12 multipliers on the unit
