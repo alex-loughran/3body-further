@@ -1,0 +1,14 @@
+=== Surface of section (z=0, dz/dt>0): 400 periods, eps=1e-05 ===
+
+case                    pts  completed    wall
+------------------------------------------------
+stable_unperturbed     1201        yes      4s
+stable_eps             1201        yes      4s
+stable_3eps            1200        yes      4s
+stable_10eps           1199        yes      4s
+stable_30eps           1201        yes      4s
+unstable_ctrl          1200        yes      4s
+krein_ctrl             1200        yes      4s
+
+Saved: surface_section.json
+Plot: surface_section.png
