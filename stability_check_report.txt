@@ -1,0 +1,14 @@
+=== Nonlinear stability check: 5000 periods, eps=1e-06 ===
+
+case                    survived      d_max    d_final        ΔE    wall
+---------------------------------------------------------------------------
+stable_unperturbed     5000/5000  4.812e-03  4.812e-03   1.3e-08     50s
+stable_eps_seed1       5000/5000  4.181e-02  2.787e-02   1.3e-08     48s
+stable_eps_seed2       5000/5000  2.928e-02  2.928e-02   1.3e-08     49s
+stable_eps_seed3       5000/5000  4.167e-02  8.982e-03   1.1e-08     48s
+stable_100x_eps        5000/5000  4.383e-02  1.447e-02   1.3e-08     48s
+unstable_ctrl_eps      5000/5000  4.113e-02  2.555e-02   1.2e-08     48s
+krein_ctrl_eps         5000/5000  4.147e-02  2.194e-02   1.2e-08     48s
+
+Saved: stability_check.json
+Plot: stability_check.png

@@ -1,0 +1,13 @@
+=== Lyapunov exponents: 2000 periods ===
+
+case                    periods  λ_max (1/time)  e-fold every    wall
+------------------------------------------------------------------------
+stable_orbit_itself        2000        0.001264      791 t.u.    208s
+stable_kick_s1             2000        0.001262      792 t.u.    203s
+stable_kick_s3             2000        0.001296      772 t.u.    208s
+stable_kick_100x           2000        0.001193      838 t.u.    210s
+unstable_ctrl              2000        0.001260      794 t.u.    208s
+krein_ctrl                 2000        0.001271      787 t.u.    203s
+
+Saved: lyapunov.json
+Plot: lyapunov.png
