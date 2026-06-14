@@ -124,11 +124,16 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--single", type=int, help="worker mode: trace one nr")
     parser.add_argument("--workers", type=int, default=os.cpu_count())
-    parser.add_argument("--timeout", type=float, default=300.0,
+    parser.add_argument("--timeout", type=float, default=200.0,
                         help="per-family wall-clock cap (s)")
     parser.add_argument("--L-min", type=float, dest="L_min", default=0.0)
     parser.add_argument("--L-max", type=float, dest="L_max", default=1.3)
-    parser.add_argument("--ds", type=float, default=0.02)
+    parser.add_argument("--band", type=float, default=0.45,
+                        help="trace each family only over [L0-band, L0+band] "
+                             "(clamped to [L-min, L-max]); families don't "
+                             "exist far from their catalogue L, and forcing "
+                             "the trace into far chaotic regions just grinds")
+    parser.add_argument("--ds", type=float, default=0.03)
     parser.add_argument("--orbits", type=int, nargs="*")
     parser.add_argument("--force", action="store_true",
                         help="re-trace families already on disk")
@@ -146,18 +151,24 @@ def main():
             if args.force or not os.path.exists(_family_path(o[0]))]
     skipped = len(orbits) - len(todo)
 
+    L0_of = {o[0]: o[1] for o in ALL_ORBITS}
     print(f"=== Batch continuation: {len(todo)} families to trace "
           f"({skipped} already on disk), {args.workers} workers, "
-          f"{args.timeout:.0f}s/family cap ===")
+          f"{args.timeout:.0f}s/family cap, band=+/-{args.band} ===", flush=True)
     t0 = time.time()
     done = 0
     with ThreadPoolExecutor(max_workers=args.workers) as ex:
-        futs = {ex.submit(_run_subprocess, nr, args.L_min, args.L_max,
-                          args.ds, args.timeout): nr for nr in todo}
+        futs = {}
+        for nr in todo:
+            lo = max(args.L_min, L0_of[nr] - args.band)
+            hi = min(args.L_max, L0_of[nr] + args.band)
+            futs[ex.submit(_run_subprocess, nr, lo, hi, args.ds,
+                           args.timeout)] = nr
         for fut in as_completed(futs):
             nr, status, dt = fut.result()
             done += 1
-            print(f"  [{done}/{len(todo)}] #{nr}: {status} ({dt:.0f}s)")
+            print(f"  [{done}/{len(todo)}] #{nr}: {status} ({dt:.0f}s)",
+                  flush=True)
     print(f"\n  traced in {time.time() - t0:.0f}s")
     aggregate_and_report()
 

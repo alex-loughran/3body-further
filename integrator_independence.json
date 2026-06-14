@@ -1,0 +1,262 @@
+{
+ "stable": {
+  "orbit": {
+   "a": 0.2464855457422579,
+   "c": -2.0352898490999687,
+   "L": 0.8308,
+   "T": 4.880106906491234
+  },
+  "rows": [
+   {
+    "method": "DOP853",
+    "rtol": 1e-10,
+    "atol": 1e-12,
+    "lambda_max": 1.0000002292825543,
+    "n_unstable": 0,
+    "det_err": 1.1407541578023483e-12,
+    "symp_defect": 5.042587270584858e-10,
+    "z_close": 1.0507334821902668e-12
+   },
+   {
+    "method": "DOP853",
+    "rtol": 1e-12,
+    "atol": 1e-14,
+    "lambda_max": 1.0000000000010483,
+    "n_unstable": 0,
+    "det_err": 2.256195230643243e-12,
+    "symp_defect": 4.612197401788533e-10,
+    "z_close": 5.264755887492568e-13
+   },
+   {
+    "method": "DOP853",
+    "rtol": 1e-13,
+    "atol": 1e-15,
+    "lambda_max": 1.0000004505288353,
+    "n_unstable": 0,
+    "det_err": 8.333334022836425e-13,
+    "symp_defect": 1.5714222868978894e-10,
+    "z_close": 1.0160068189624691e-12
+   },
+   {
+    "method": "Radau",
+    "rtol": 1e-10,
+    "atol": 1e-12,
+    "lambda_max": 1.0000004280568637,
+    "n_unstable": 0,
+    "det_err": 1.0118572646433677e-12,
+    "symp_defect": 2.4431170527117617e-10,
+    "z_close": 5.792167435132097e-12
+   },
+   {
+    "method": "Radau",
+    "rtol": 1e-12,
+    "atol": 1e-14,
+    "lambda_max": 1.0000013806120047,
+    "n_unstable": 0,
+    "det_err": 3.560485239972877e-12,
+    "symp_defect": 1.1095931107355541e-10,
+    "z_close": 1.744501623485179e-12
+   },
+   {
+    "method": "Radau",
+    "rtol": 1e-13,
+    "atol": 1e-15,
+    "lambda_max": 1.0000004175052575,
+    "n_unstable": 0,
+    "det_err": 4.278577492300428e-12,
+    "symp_defect": 1.499981717862661e-10,
+    "z_close": 7.760145573276755e-12
+   },
+   {
+    "method": "LSODA",
+    "rtol": 1e-10,
+    "atol": 1e-12,
+    "lambda_max": 1.0000000001283658,
+    "n_unstable": 0,
+    "det_err": 4.1269099249063856e-11,
+    "symp_defect": 8.010538356848194e-08,
+    "z_close": 1.1351957621279336e-09
+   },
+   {
+    "method": "LSODA",
+    "rtol": 1e-12,
+    "atol": 1e-14,
+    "lambda_max": 1.0000016201971016,
+    "n_unstable": 0,
+    "det_err": 6.927791673660977e-14,
+    "symp_defect": 4.819617759855733e-10,
+    "z_close": 5.422123299307089e-11
+   },
+   {
+    "method": "LSODA",
+    "rtol": 1e-13,
+    "atol": 1e-15,
+    "lambda_max": 1.0000002392684142,
+    "n_unstable": 0,
+    "det_err": 6.787903572558207e-13,
+    "symp_defect": 3.709826151915078e-10,
+    "z_close": 3.0337942012690156e-12
+   },
+   {
+    "method": "RK45",
+    "rtol": 1e-10,
+    "atol": 1e-12,
+    "lambda_max": 1.0000000013712158,
+    "n_unstable": 0,
+    "det_err": 3.524780467500932e-10,
+    "symp_defect": 1.1098315673552592e-07,
+    "z_close": 9.102844253584186e-09
+   },
+   {
+    "method": "RK45",
+    "rtol": 1e-12,
+    "atol": 1e-14,
+    "lambda_max": 1.0000002018771654,
+    "n_unstable": 0,
+    "det_err": 4.745981385667619e-12,
+    "symp_defect": 1.8759889442536717e-09,
+    "z_close": 7.007072035641473e-11
+   },
+   {
+    "method": "RK45",
+    "rtol": 1e-13,
+    "atol": 1e-15,
+    "lambda_max": 1.0000011835925324,
+    "n_unstable": 0,
+    "det_err": 5.46229728115577e-14,
+    "symp_defect": 2.1376228509312295e-10,
+    "z_close": 7.54628279346274e-12
+   }
+  ]
+ },
+ "unstable": {
+  "orbit": {
+   "a": 0.2487880837570058,
+   "c": -2.0224073232909086,
+   "L": 0.82885,
+   "T": 4.874492131200299
+  },
+  "rows": [
+   {
+    "method": "DOP853",
+    "rtol": 1e-10,
+    "atol": 1e-12,
+    "lambda_max": 1.9910774431127778,
+    "n_unstable": 2,
+    "det_err": 5.353495424742505e-13,
+    "symp_defect": 4.19279332078793e-10,
+    "z_close": 5.197767025860095e-13
+   },
+   {
+    "method": "DOP853",
+    "rtol": 1e-12,
+    "atol": 1e-14,
+    "lambda_max": 1.9910774430695368,
+    "n_unstable": 2,
+    "det_err": 1.6868728636154628e-12,
+    "symp_defect": 3.984873161326512e-10,
+    "z_close": 9.129726625176897e-13
+   },
+   {
+    "method": "DOP853",
+    "rtol": 1e-13,
+    "atol": 1e-15,
+    "lambda_max": 1.991077443314285,
+    "n_unstable": 2,
+    "det_err": 3.006483950684924e-13,
+    "symp_defect": 1.5838510099710887e-10,
+    "z_close": 1.5235779193203968e-12
+   },
+   {
+    "method": "Radau",
+    "rtol": 1e-10,
+    "atol": 1e-12,
+    "lambda_max": 1.9910774436361829,
+    "n_unstable": 2,
+    "det_err": 1.4355183708403274e-12,
+    "symp_defect": 1.4432678267420095e-10,
+    "z_close": 4.880313993496083e-12
+   },
+   {
+    "method": "Radau",
+    "rtol": 1e-12,
+    "atol": 1e-14,
+    "lambda_max": 1.991077443145261,
+    "n_unstable": 2,
+    "det_err": 4.197087122292942e-12,
+    "symp_defect": 5.016164762906641e-10,
+    "z_close": 1.9672474212247982e-13
+   },
+   {
+    "method": "Radau",
+    "rtol": 1e-13,
+    "atol": 1e-15,
+    "lambda_max": 1.9910774434438612,
+    "n_unstable": 2,
+    "det_err": 1.7890133818809772e-12,
+    "symp_defect": 1.6569613562125307e-10,
+    "z_close": 2.9376053804784824e-12
+   },
+   {
+    "method": "LSODA",
+    "rtol": 1e-10,
+    "atol": 1e-12,
+    "lambda_max": 1.9910775018294462,
+    "n_unstable": 2,
+    "det_err": 5.623279619726418e-12,
+    "symp_defect": 3.458590332374901e-08,
+    "z_close": 4.844335605515482e-10
+   },
+   {
+    "method": "LSODA",
+    "rtol": 1e-12,
+    "atol": 1e-14,
+    "lambda_max": 1.9910774452079734,
+    "n_unstable": 2,
+    "det_err": 2.890909733821445e-12,
+    "symp_defect": 2.382137681267323e-09,
+    "z_close": 2.1202572536589084e-11
+   },
+   {
+    "method": "LSODA",
+    "rtol": 1e-13,
+    "atol": 1e-15,
+    "lambda_max": 1.9910774435231169,
+    "n_unstable": 2,
+    "det_err": 1.5732970481963093e-12,
+    "symp_defect": 2.2089446533502217e-10,
+    "z_close": 3.776064937379742e-12
+   },
+   {
+    "method": "RK45",
+    "rtol": 1e-10,
+    "atol": 1e-12,
+    "lambda_max": 1.991076528992888,
+    "n_unstable": 2,
+    "det_err": 3.596809516892563e-10,
+    "symp_defect": 1.0987853610882684e-07,
+    "z_close": 9.008934389540098e-09
+   },
+   {
+    "method": "RK45",
+    "rtol": 1e-12,
+    "atol": 1e-14,
+    "lambda_max": 1.9910774361608923,
+    "n_unstable": 2,
+    "det_err": 3.2578384434600594e-12,
+    "symp_defect": 1.823368364439596e-09,
+    "z_close": 6.868590360292513e-11
+   },
+   {
+    "method": "RK45",
+    "rtol": 1e-13,
+    "atol": 1e-15,
+    "lambda_max": 1.9910774425426283,
+    "n_unstable": 2,
+    "det_err": 2.3510082769462315e-12,
+    "symp_defect": 1.8259010967138961e-10,
+    "z_close": 5.860025360876267e-12
+   }
+  ]
+ }
+}
