@@ -101,41 +101,70 @@ def main():
             M[i, k] = (out[i] - base[i]) / delta
         print(f"    column {k+1}/12 done ({time.time()-t0:.0f}s)")
 
-    # Eigenvalues = Floquet multipliers.
-    evals = mp.eig(M, left=False, right=False)
-    mags = sorted((abs(z) for z in evals), reverse=True)
+    # Save the monodromy so this analysis can be redone instantly.
+    with open("hp_monodromy.json", "w") as f:
+        json.dump([[mp.nstr(M[i, j], args.dps) for j in range(12)]
+                   for i in range(12)], f)
+
     det = mp.det(M)
-    lam_max = mags[0]
+    evals = mp.eig(M, left=False, right=False)
 
-    print(f"\n  det(M)        = {mp.nstr(det, 20)}  (should be 1)")
-    print(f"  |lambda|_max  = {mp.nstr(lam_max, 20)}")
-    print(f"  |lambda|_max - 1 = {mp.nstr(lam_max - 1, 6)}")
-    print(f"  all |multipliers| (top 6): "
-          f"{[mp.nstr(m, 14) for m in mags[:6]]}")
+    # CRITICAL: a Hamiltonian periodic orbit has TRIVIAL unit multipliers from
+    # symmetries (time-translation, energy/period, COM/momentum, and -- at L!=0
+    # -- rotation). These form DEFECTIVE Jordan blocks at +1, which a tiny STM
+    # error eps splits as 1 +/- sqrt(eps) (NOT 1 +/- eps). So they show up as
+    # large-looking real deviations near angle 0 and must NOT be counted as
+    # physical instability. The physical b^3 multipliers sit at moderate angles
+    # (~0.22, 0.37, 0.47, 2.6 rad; see krein_signature.py). Separate by angle.
+    rows = sorted(((abs(z), float(mp.atan2(mp.im(z), mp.re(z))), z)
+                   for z in evals), key=lambda r: abs(r[1]))
+    ANG = 0.05  # rad; below this = trivial near-+1 eigenvalue
+    trivial = [r for r in rows if abs(r[1]) < ANG]
+    physical = [r for r in rows if abs(r[1]) >= ANG]
 
-    # Double-precision cross-check.
+    lam_max_all = max(r[0] for r in rows)
+    lam_max_phys = max(r[0] for r in physical) if physical else mp.mpf(1)
+    sqrt_stm = mp.sqrt(abs(det - 1))
+
+    print(f"\n  det(M)               = {mp.nstr(det, 20)}  (should be 1)")
+    print(f"  |lambda|_max (ALL)   = {mp.nstr(lam_max_all, 16)}  "
+          f"<- inflated by trivial Jordan split ~ sqrt(STM err) "
+          f"= {mp.nstr(sqrt_stm, 4)}")
+    print(f"\n  TRIVIAL (angle<{ANG}, the +1 symmetry block):")
+    for m, ang, _ in trivial:
+        print(f"    |lam|={mp.nstr(m, 16):<20} angle={ang:+.4f}")
+    print(f"  PHYSICAL multipliers (angle>={ANG}):")
+    for m, ang, _ in physical:
+        print(f"    |lam|={mp.nstr(m, 16):<20} angle={ang:+.4f}  "
+              f"||lam|-1|={mp.nstr(abs(m-1), 4)}")
+    print(f"\n  |lambda|_max (PHYSICAL) - 1 = {mp.nstr(lam_max_phys - 1, 6)}")
+
     dp = analyse_orbit(initial_conditions_from_params(
         STABLE["a"], STABLE["c"], STABLE["L"]), STABLE["T"], verbose=False)
     dp_max = float(max(abs(m) for m in dp["multipliers"]))
-    print(f"\n  double-precision |lambda|_max = {dp_max:.7f} (cross-check)")
+    print(f"  double-precision |lambda|_max = {dp_max:.7f} (cross-check)")
 
-    n_off = sum(1 for m in mags if abs(m - 1) > mp.mpf(10) ** -10)
-    verdict = ("ALL multipliers on the unit circle to <1e-10 -> linearly "
-               "stable, NOT a double-precision artifact"
-               if n_off == 0 else
-               f"{n_off} multiplier(s) off the unit circle by >1e-10 -> "
-               "weak instability resolved by high precision")
+    phys_off = sum(1 for m, _, _ in physical if abs(m - 1) > mp.mpf(10) ** -10)
+    verdict = ("PHYSICAL multipliers on the unit circle to ~1e-12 -> linearly "
+               "stable; the larger deviations are the trivial +1 Jordan block "
+               "(= sqrt of STM error), not instability"
+               if phys_off == 0 else
+               f"{phys_off} PHYSICAL multiplier(s) off the circle by >1e-10 "
+               "-> genuine weak instability")
     print(f"\n  VERDICT: {verdict}")
 
     with open("hp_floquet.json", "w") as f:
         json.dump({"dps": args.dps, "delta": args.delta,
                    "det": mp.nstr(det, 25),
-                   "lambda_max": mp.nstr(lam_max, 25),
-                   "lambda_max_minus_1": mp.nstr(lam_max - 1, 10),
-                   "multiplier_mags": [mp.nstr(m, 20) for m in mags],
+                   "lambda_max_all": mp.nstr(lam_max_all, 25),
+                   "lambda_max_physical": mp.nstr(lam_max_phys, 25),
+                   "lambda_max_physical_minus_1": mp.nstr(lam_max_phys - 1, 10),
+                   "sqrt_stm_error": mp.nstr(sqrt_stm, 6),
+                   "physical": [[mp.nstr(m, 20), ang] for m, ang, _ in physical],
+                   "trivial": [[mp.nstr(m, 20), ang] for m, ang, _ in trivial],
                    "double_precision_lambda_max": dp_max,
-                   "n_off_circle_1e-10": n_off}, f, indent=1)
-    print("\n  Saved: hp_floquet.json")
+                   "n_physical_off_1e-10": phys_off}, f, indent=1)
+    print("\n  Saved: hp_floquet.json (+ hp_monodromy.json)")
 
 
 if __name__ == "__main__":

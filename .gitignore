@@ -4,6 +4,7 @@ __pycache__/
 .idea/
 *.npz
 *.png
+!docs/img/*.png
 known_words_cache.json
 orbits.db
 batch_families/
