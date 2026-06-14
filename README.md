@@ -50,8 +50,16 @@ stability dip and resolving the multiplier structure at fine resolution
 (`dip_trace.py`) found a genuine stable window: **L ∈ [0.83050, 0.83095]**,
 where all twelve Floquet multipliers sit on the unit circle
 (|λ|_max = 1.000000 across ten independently refined points, accurate
-segmented monodromy). The window is bounded below by a Krein quartet
-re-landing on the circle and above by period-doubling exit through −1.
+segmented monodromy). A fine march in steps of 2×10⁻⁵
+(`period_double.py`) resolves the bounding bifurcations: the window is bounded
+below by a Krein quartet re-landing on the circle, and **above by a second
+Krein bifurcation at L≈0.83097** where a complex quartet leaves the unit
+circle (n_unstable 0→2). A **period-doubling** bifurcation — a real Floquet
+multiplier crossing −1 transversally — sits just above at L_PD=0.831064,
+spawning a 2T branch on the already-unstable continuation. (An earlier note
+attributing the upper window edge itself to the period-doubling was
+imprecise: the edge is the Krein exit; the period-doubling is a separate,
+slightly higher event.)
 Representative orbit: a=0.246486, c=−2.035290, L=0.830800, T=4.880107,
 E=−1.5766, word b³. All linearly stable three-body orbits documented in the
 literature are at **zero** angular momentum — the four L=0 stability regions
@@ -149,6 +157,8 @@ python main.py refine-bhh 0.0951 -2.7279 0.7 2.851
 | `bk_bias.py` | Geometric analysis of the pure-b^k bias: IC geometry + syzygy census |
 | `continuation.py` | Pseudo-arclength continuation of orbit families in L |
 | `dip_trace.py` | Fine-resolution stability analysis of the L≈0.83 dip |
+| `period_double.py` | Resolves the window's bounding bifurcations: Krein exit + period-doubling at L_PD |
+| `batch_continuation.py` | Parallel continuation of all 75 Jankovic families: fold map + stability-window hunt |
 | `surface_section.py` / `section_island.py` | Poincaré-section KAM test of the stable orbit |
 | `ll_data.py` | Li & Liao 695-family data loader |
 | `analyse_catalogue.py` | Floquet catalogue analysis and plots |
