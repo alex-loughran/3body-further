@@ -160,6 +160,8 @@ python main.py refine-bhh 0.0951 -2.7279 0.7 2.851
 | `period_double.py` | Resolves the window's bounding bifurcations: Krein exit + period-doubling at L_PD |
 | `batch_continuation.py` | Parallel continuation of all 75 Jankovic families: fold map + stability-window hunt |
 | `surface_section.py` / `section_island.py` | Poincaré-section KAM test of the stable orbit |
+| `integrator_independence.py` | Validation: stable verdict across DOP853/Radau/LSODA/RK45 × tolerances |
+| `hp_floquet.py` | Validation: arbitrary-precision (mpmath) Floquet multipliers of the stable orbit |
 | `ll_data.py` | Li & Liao 695-family data loader |
 | `analyse_catalogue.py` | Floquet catalogue analysis and plots |
 
@@ -168,7 +170,7 @@ python main.py refine-bhh 0.0951 -2.7279 0.7 2.851
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-pip install numpy scipy matplotlib numba
+pip install numpy scipy matplotlib numba mpmath
 python main.py validate
 ```
 
