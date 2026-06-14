@@ -6,6 +6,7 @@ __pycache__/
 *.png
 known_words_cache.json
 orbits.db
+batch_families/
 floquet_catalogue.json
 *_candidates.json
 .DS_Store
