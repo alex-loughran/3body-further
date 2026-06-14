@@ -52,19 +52,31 @@ While Mac Mini results remain inaccessible, all four Phase 1 tasks were complete
 - Files: bk_bias.py, bk_bias_census_report.txt, bk_bias_census.npz/.png,
   bk_bias_geometry.png.
 
-### Nonlinear stability of the stable orbit — STILL OPEN (linear only)
+### Nonlinear stability — CONFIRMED via surface of section (KAM island)
 
-- Two long-time probes (stability_check.py 5000 periods; lyapunov.py 2000)
-  are both INCONCLUSIVE. Distance metric saturates (libration / confined
-  chaos / integrator drift all at 1e-3..1e-2). Lyapunov hits a 1/t
-  renormalisation floor (~0.0013 by n=2000) that swallows every case,
-  including the periodic orbit itself and the λ≈1.99 unstable control;
-  it does cross the control's true Floquet rate 0.141 near n=10 first.
-- No escape observed in 5000 periods even at 100× perturbation — weak
-  positive sign, not proof (unstable neighbours also stay confined).
-- ACTION (task #11): floor-free test — shadow-orbit (two-trajectory)
-  Lyapunov OR surface-of-section rotation number. Until then, the claim
-  is "LINEARLY stable", not "stable". Do not overclaim in the email.
+- Floor-free Poincaré section (surface_section.py, section_island.py)
+  settled it. Earlier Lyapunov/distance probes failed (saturation / 1/t
+  renormalisation floor) — kept for the record but superseded.
+- Correlation-dimension estimator CALIBRATED on synthetic sets: circle
+  →1.04, 2-torus section →1.16, regular 3-torus section →2.36, chaos →3.04.
+  KEY: reduced phase space is 6D (3 DOF) → section is 4D → a regular
+  3-torus already fills a 2D section sheet. So D separates regular
+  (≈1-2.4) from chaotic (≈3), NOT 1D from 2D. (I initially got this wrong.)
+- Analyse ONE period-3 cluster at a time (whole-section view is dominated
+  by the 3 fixed points ~unit-distance apart; real structure is at ≤1e-2).
+- RESULT: perturbing the stable orbit (kicks 1e-5..3e-3) gives clean nested
+  closed loops around the fixed point, D≈1.5-1.9 (regular KAM tori); the
+  kick=3e-4 case shows a resonance island (two-lobe) — a regular-only
+  signature. Island half-width ~3e-3..1e-2; kicks ≥1e-2 escape.
+- Chaos control (D~3 in the chaotic zone) NOT obtained: chaotic-zone
+  trajectories at L=0.83 have violent close approaches that make DOP853
+  grind indefinitely (signal.alarm can't interrupt scipy C code). The
+  intractability is itself a stark contrast vs the seconds-fast island
+  integrations, but no clean D number. Synthetic calibration already
+  proves the metric resolves chaos, so the conclusion stands.
+- Claim is now "linearly stable with strong numerical evidence of
+  nonlinear (KAM) stability". Rigorous proof would need frequency-map
+  analysis (Laskar NAFF), a possible future task.
 
 ### STABLE ORBIT AT L≠0 — linearly confirmed (headline result)
 

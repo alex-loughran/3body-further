@@ -58,6 +58,17 @@ across all 110 published orbits via the Floquet catalogue) is an L=0
 figure-eight relative — this appears to be the first at L≠0, found by
 continuation at parameters no grid scan visited.
 
+The stability is **nonlinear, not merely linear.** A Poincaré surface of
+section (`surface_section.py`, `section_island.py`) shows small perturbations
+of the orbit tracing clean nested closed loops around its period-3 fixed
+points — invariant KAM tori — with a resonance island visible at
+intermediate amplitude. A correlation-dimension estimator calibrated on
+synthetic sets (circle → 1.0, regular 3-torus section → 2.4, chaos → 3.0)
+puts the perturbed motion at D ≈ 1.5–1.9 (regular) for kicks up to ~3×10⁻³;
+the island half-width is ~10⁻² in state space. (The reduced phase space is
+6D, so the section is 4D and a regular 3-torus already fills a 2D sheet —
+dimension separates regular from chaotic, not 1D from 2D.)
+
 ![Stable b³ orbit at L=0.8308](stable_b3_L0.8308.png)
 
 ## How it works
@@ -134,6 +145,7 @@ python main.py refine-bhh 0.0951 -2.7279 0.7 2.851
 | `bk_bias.py` | Geometric analysis of the pure-b^k bias: IC geometry + syzygy census |
 | `continuation.py` | Pseudo-arclength continuation of orbit families in L |
 | `dip_trace.py` | Fine-resolution stability analysis of the L≈0.83 dip |
+| `surface_section.py` / `section_island.py` | Poincaré-section KAM test of the stable orbit |
 | `ll_data.py` | Li & Liao 695-family data loader |
 | `analyse_catalogue.py` | Floquet catalogue analysis and plots |
 
