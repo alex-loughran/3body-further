@@ -40,7 +40,7 @@ from three_body import ALL_ORBITS
 from continuation import trace_family, find_folds, find_bifurcations
 
 OUTDIR = "batch_families"
-MAX_STEPS = 400
+MAX_STEPS = 250  # generous: let families march to their folds/boundaries
 
 
 def _family_path(nr):

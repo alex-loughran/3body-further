@@ -30,10 +30,12 @@ import time
 import mpmath as mp
 import numpy as np
 
-from three_body import initial_conditions_from_params
-from floquet import analyse_orbit
+import numpy as np
+from three_body import initial_conditions_from_params, integrate_orbit, to_Z_vector
+from floquet import analyse_orbit, newton_refine_bhh
 
-STABLE = {"a": 0.24648555, "c": -2.03528985, "L": 0.830800, "T": 4.88010691}
+# Seed values (low precision); refined to full double precision before use.
+STABLE = {"a": 0.246486, "c": -2.035290, "L": 0.830800, "T": 4.880107}
 
 
 def eom(t, y):
@@ -66,12 +68,21 @@ def main():
     args = parser.parse_args()
 
     mp.mp.dps = args.dps
-    T = mp.mpf(repr(STABLE["T"]))
     delta = mp.mpf(args.delta)
     tol = mp.mpf(10) ** -(args.dps - 6)
 
-    y0_np = initial_conditions_from_params(STABLE["a"], STABLE["c"],
-                                           STABLE["L"])
+    # Refine the orbit to FULL double precision first -- the resolution floor of
+    # this whole test is set by how exactly (a, c, T) hit the true periodic
+    # orbit. Using the full-precision Newton output (~1e-12 residual) instead of
+    # hand-typed digits is what sets the floor at ~1e-12 rather than ~1e-8.
+    a, c, T_ref, ok, info = newton_refine_bhh(
+        STABLE["a"], STABLE["c"], STABLE["L"], STABLE["T"], tol=1e-13)
+    y0_np = info["state"]
+    res_dp = float(np.linalg.norm(
+        to_Z_vector(integrate_orbit(y0_np, T_ref).sol(T_ref)) - to_Z_vector(y0_np)))
+    print(f"  double-refine: a={a:.15g} c={c:.15g} T={T_ref:.15g} "
+          f"converged={ok}, Z-residual={res_dp:.2e} (this is the floor)")
+    T = mp.mpf(repr(float(T_ref)))
     y0 = [mp.mpf(repr(float(x))) for x in y0_np]
 
     print(f"=== High-precision Floquet: dps={args.dps}, delta={args.delta} ===")
