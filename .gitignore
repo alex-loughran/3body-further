@@ -9,3 +9,4 @@ orbits.db
 floquet_catalogue.json
 *_candidates.json
 .DS_Store
+*.pdf

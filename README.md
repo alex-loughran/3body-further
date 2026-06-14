@@ -53,10 +53,14 @@ where all twelve Floquet multipliers sit on the unit circle
 segmented monodromy). The window is bounded below by a Krein quartet
 re-landing on the circle and above by period-doubling exit through −1.
 Representative orbit: a=0.246486, c=−2.035290, L=0.830800, T=4.880107,
-E=−1.5766, word b³. Every previously known linearly stable orbit (checked
-across all 110 published orbits via the Floquet catalogue) is an L=0
-figure-eight relative — this appears to be the first at L≠0, found by
-continuation at parameters no grid scan visited.
+E=−1.5766, word b³. All linearly stable three-body orbits documented in the
+literature are at **zero** angular momentum — the four L=0 stability regions
+(Schubart, S-orbit, figure-eight, Broucke; see Hristov, Hristova & Tanikawa,
+*New Astronomy* 125 (2026) 102528, which catalogues 971 of them) and the
+figure-eight relatives in our own Floquet catalogue. This b³ orbit appears to
+be the first linearly stable orbit at L≠0, found by continuation at parameters
+no grid scan visited. Notably, that same 2026 paper proposes continuation in L
+from a stable L=0 orbit as *future work* — the exact gap this result occupies.
 
 The stability is **nonlinear, not merely linear.** A Poincaré surface of
 section (`surface_section.py`, `section_island.py`) shows small perturbations
