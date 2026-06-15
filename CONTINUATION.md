@@ -231,7 +231,7 @@ Plus b^14 at L=0.7 from the original 50×50 scan.
   3. Sample next batch where model uncertainty is highest
   4. Evaluate, retrain, repeat
 - Compare orbits-found-per-evaluation vs uniform grid
-- This is the publishable result: ML-guided discovery outperforms brute-force
+- This is the key result: ML-guided discovery outperforms brute-force
 
 ### Phase 3: Representation learning (~6–8 weeks after Phase 2)
 
@@ -250,11 +250,11 @@ Plus b^14 at L=0.7 from the original 50×50 scan.
 - Embedding distance from known catalogue
 - Flag candidates that are topologically unusual
 
-### Phase 4: Paper (~8–12 weeks after Phase 3)
+### Phase 4: Write-up (~8–12 weeks after Phase 3)
 
 **Strongest angle: "ML-guided discovery of periodic orbits in the three-body problem"**
 
-Required experiments:
+Experiments to run:
 - Baseline: uniform grid search results (already have this)
 - ML-guided search: active learning results
 - Comparison: orbits per compute-hour, recovery rate of known orbits
@@ -264,9 +264,9 @@ Required experiments:
 
 ---
 
-## Publication angles (non-ML, from current results alone)
+## Result angles (non-ML, from current results alone)
 
-These are publishable without any ML work:
+These stand on their own without any ML work:
 
 1. **New orbit families in BHH space** — new b^k families at L values not in existing catalogues
 2. **Pure b^k topological bias** — why does BHH only access one word type? Geometric analysis of the parametrisation.

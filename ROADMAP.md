@@ -48,7 +48,7 @@ Handles: parallel dispatch via `multiprocessing.Pool`, per-row incremental savin
 - Run scanner at higher resolution in symmetric space for comparison
 - Analyse results
 
-**This is the phase that determines whether results are publishable.**
+**This is the phase that determines how strong the results are.**
 
 ## Pre-scan work (can be done locally before AWS)
 

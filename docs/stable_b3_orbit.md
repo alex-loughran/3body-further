@@ -94,7 +94,7 @@ island, itself a regular structure. Motion stays bounded out to kick ~`10⁻²`.
 ## Status / caveats
 
 The result is double-precision-validated and now arbitrary-precision-checked at
-the representative point; what remains for a publication-grade claim is a
+the representative point. What remains to fully pin it down is a
 long-time (`10⁴`–`10⁶` period) shadowing test and, ideally, high-precision
 Newton refinement of the orbit itself (not just the monodromy). The headline
 claim is therefore stated as *"appears to be the first linearly stable orbit at
