@@ -91,11 +91,24 @@ kicks up to ~`3×10⁻³`.
 invariant tori (regular); the double-lobe at kick `3×10⁻⁴` is a resonance
 island, itself a regular structure. Motion stays bounded out to kick ~`10⁻²`.*
 
+**Long-time confinement.** Integrating perturbed copies of the orbit for
+**10⁴ periods** and tracking their distance to the orbit's invariant Z-loop:
+perturbations inside the KAM region (`10⁻⁴`, `10⁻³`) stay in a flat band
+around `~10⁻²` for the entire run (no upward drift), while a large control
+perturbation (`3×10⁻²`) immediately leaves to a distance of `~2` and stays
+there. So the confinement is not just a short-section artifact — it holds over
+long times, and the test demonstrably detects escape when it happens.
+
+![Long-time shadowing](img/shadowing.png)
+
+*Distance to the reference orbit's Z-loop over 10⁴ periods. KAM-region
+perturbations (blue, orange) stay bounded; the control (green) escapes.*
+
 ## Status / caveats
 
-The result is double-precision-validated and now arbitrary-precision-checked at
-the representative point. What remains to fully pin it down is a
-long-time (`10⁴`–`10⁶` period) shadowing test and, ideally, high-precision
+The result is double-precision-validated, arbitrary-precision-checked at the
+representative point, and confirmed nonlinearly confined over 10⁴ periods. The
+main thing still worth doing for the strongest possible version is high-precision
 Newton refinement of the orbit itself (not just the monodromy). The headline
 claim is therefore stated as *"appears to be the first linearly stable orbit at
 `L ≠ 0`, with strong numerical evidence of nonlinear (KAM) stability."*
