@@ -1,0 +1,1146 @@
+{
+ "rows": [
+  {
+   "name": "figure-eight",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 6.325913984326447,
+   "lambda_max": 1.0000418763929564,
+   "r_min": 0.6905266285674094,
+   "is_stable": true,
+   "discovered": false
+  },
+  {
+   "name": "I.A.1 butterfly I",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 6.234674838649422,
+   "lambda_max": 1.7757590797899034,
+   "r_min": 0.011024477689984467,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "I.A.2 butterfly II",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 7.003709601561964,
+   "lambda_max": 1.017108204730925,
+   "r_min": 0.004099156355599912,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "I.A.3 bumblebee",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 63.53435334024236,
+   "lambda_max": 1.0022462963637688,
+   "r_min": 0.011911695205312867,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "I.B.1 moth I",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 14.894305175034306,
+   "lambda_max": 1.0000926021049312,
+   "r_min": 0.07946749439694756,
+   "is_stable": true,
+   "discovered": false
+  },
+  {
+   "name": "I.B.2 moth II",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 28.66927091500268,
+   "lambda_max": 1.000209648367507,
+   "r_min": 0.04970417000777396,
+   "is_stable": true,
+   "discovered": false
+  },
+  {
+   "name": "I.B.3 butterfly III",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 13.86712343574667,
+   "lambda_max": 1.0014168062825028,
+   "r_min": 0.008336715010227959,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "I.B.4 moth III",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 25.83923635634572,
+   "lambda_max": 1.6838796624937822,
+   "r_min": 0.006717094378299668,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "I.B.5 goggles",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 10.4648495258252,
+   "lambda_max": 20.667907672739677,
+   "r_min": 0.018478513855909096,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "I.B.6 butterfly IV",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 79.47487922747484,
+   "lambda_max": 6302.883547486062,
+   "r_min": 0.0038730372294610714,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "I.B.7 dragonfly",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 21.272337394583044,
+   "lambda_max": 1.312332400545627,
+   "r_min": 0.007335621718431872,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "II.B.1 yarn",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 55.50242338864942,
+   "lambda_max": 4.9931348204829025,
+   "r_min": 0.004988156816472776,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "II.C.2a yin-yang I",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 17.328834018638574,
+   "lambda_max": 1.9052274648076475,
+   "r_min": 0.0132766144579063,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "II.C.2b yin-yang I",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 10.963303088026608,
+   "lambda_max": 1.9052274624617846,
+   "r_min": 0.009784428266706474,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "II.C.3a yin-yang II",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 55.78932703961816,
+   "lambda_max": 1.0090845017579595,
+   "r_min": 0.0035569330239209767,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "II.C.3b yin-yang II",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 54.207998188226945,
+   "lambda_max": 1.679719308400135,
+   "r_min": 0.00156391547333398,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "satellite M8",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 6.325913984326447,
+   "lambda_max": 1.0000418763929564,
+   "r_min": 0.6905266285674094,
+   "is_stable": true,
+   "discovered": false
+  },
+  {
+   "name": "satellite S8",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 6.290818765075959,
+   "lambda_max": 1.0958744193785321,
+   "r_min": 0.6582974424485094,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "satellite NC1",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 35.043087021657705,
+   "lambda_max": 1.000024045390657,
+   "r_min": 0.3605246347818333,
+   "is_stable": true,
+   "discovered": false
+  },
+  {
+   "name": "satellite NC2",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 57.54525393982797,
+   "lambda_max": 1.0000106689157233,
+   "r_min": 0.5018104658095506,
+   "is_stable": true,
+   "discovered": false
+  },
+  {
+   "name": "satellite O1",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 32.849071167135584,
+   "lambda_max": 4.0402800179729255,
+   "r_min": 0.30942988499044943,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "satellite O2",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 64.8332815482137,
+   "lambda_max": 4.0402800179041565,
+   "r_min": 0.48686908177746496,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "satellite O3",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 53.620585541841606,
+   "lambda_max": 4.233534314252727,
+   "r_min": 0.28182919154414976,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "satellite O4",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 55.913728588152075,
+   "lambda_max": 4.233534329243265,
+   "r_min": 0.28980813763230223,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "satellite O5",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 71.01066319538114,
+   "lambda_max": 2.280426710668447,
+   "r_min": 0.34571505781003514,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "satellite O6",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 80.32257174655977,
+   "lambda_max": 1.4540097372176786,
+   "r_min": 0.33248527362331387,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "satellite O7",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 80.35481313411165,
+   "lambda_max": 1.4540097213070171,
+   "r_min": 0.3325742404926655,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "satellite O8",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 81.21673157400672,
+   "lambda_max": 2.134427688029009,
+   "r_min": 0.3421542933689457,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "satellite O9",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 81.2702781327039,
+   "lambda_max": 2.1796107845994594,
+   "r_min": 0.343710268764582,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "satellite O10",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 82.67025949878165,
+   "lambda_max": 1.1128596863775888,
+   "r_min": 0.3593420722501983,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "satellite O11",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 82.74231959211515,
+   "lambda_max": 1.1128596980081171,
+   "r_min": 0.359550857224937,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "satellite O12",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 83.7854699908325,
+   "lambda_max": 1.0012878697248935,
+   "r_min": 0.37864735290419205,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "satellite O13",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 88.67323817137986,
+   "lambda_max": 1.0000244339341664,
+   "r_min": 0.4083479117598745,
+   "is_stable": true,
+   "discovered": false
+  },
+  {
+   "name": "satellite O14",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 89.94046796511348,
+   "lambda_max": 1.0000229824567342,
+   "r_min": 0.4185494123674853,
+   "is_stable": true,
+   "discovered": false
+  },
+  {
+   "name": "satellite O15",
+   "param": "symmetric",
+   "L": 0.0,
+   "T": 91.98178020298405,
+   "lambda_max": 1.0000238772770937,
+   "r_min": 0.4248586991097351,
+   "is_stable": true,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #1",
+   "param": "bhh",
+   "L": 0.7,
+   "T": 4.461253828533848,
+   "lambda_max": 33.42092039544949,
+   "r_min": 0.6039434718271248,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #2",
+   "param": "bhh",
+   "L": 0.85,
+   "T": 4.933261242842456,
+   "lambda_max": 32.051709693666396,
+   "r_min": 0.3187967968252413,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #3",
+   "param": "bhh",
+   "L": 0.65,
+   "T": 5.3863491076444445,
+   "lambda_max": 102.87850381215873,
+   "r_min": 0.32067017406100085,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #4",
+   "param": "bhh",
+   "L": 0.85,
+   "T": 4.7938785419958245,
+   "lambda_max": 124.92626988235916,
+   "r_min": 0.3102449251657819,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #5",
+   "param": "bhh",
+   "L": 0.7,
+   "T": 3.0422405158177166,
+   "lambda_max": 10.53473660466645,
+   "r_min": 0.14622972684193145,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #6",
+   "param": "bhh",
+   "L": 0.65,
+   "T": 6.801755863530688,
+   "lambda_max": 1084.699749890086,
+   "r_min": 0.036473851103004724,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #7",
+   "param": "bhh",
+   "L": 0.65,
+   "T": 5.957369520969618,
+   "lambda_max": 132.5422556851109,
+   "r_min": 0.42304673899582934,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #8",
+   "param": "bhh",
+   "L": 0.8,
+   "T": 4.476394017708228,
+   "lambda_max": 20.418776570956197,
+   "r_min": 0.39424587574511666,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #9",
+   "param": "bhh",
+   "L": 0.65,
+   "T": 8.787543576348094,
+   "lambda_max": 1729.747619866806,
+   "r_min": 0.027867829603782642,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #10",
+   "param": "bhh",
+   "L": 0.8,
+   "T": 4.127804565918809,
+   "lambda_max": 18.89982387764775,
+   "r_min": 0.32289662188556284,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #11",
+   "param": "bhh",
+   "L": 0.9,
+   "T": 4.7209169014765955,
+   "lambda_max": 140.44351983250658,
+   "r_min": 0.21350655158956117,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #12",
+   "param": "bhh",
+   "L": 0.65,
+   "T": 9.439889950801257,
+   "lambda_max": 229.6217298273979,
+   "r_min": 0.4741529829844984,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #13",
+   "param": "bhh",
+   "L": 0.8,
+   "T": 3.9087745978555115,
+   "lambda_max": 17.99802929541575,
+   "r_min": 0.27631212248893566,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #14",
+   "param": "bhh",
+   "L": 0.85,
+   "T": 4.453398675197349,
+   "lambda_max": 17.048228348819737,
+   "r_min": 0.30148106863684776,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #15",
+   "param": "bhh",
+   "L": 0.9,
+   "T": 4.748293887288932,
+   "lambda_max": 84.91172144424692,
+   "r_min": 0.24204162291506245,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #16",
+   "param": "bhh",
+   "L": 0.9,
+   "T": 4.742150512064779,
+   "lambda_max": 23.51635413187833,
+   "r_min": 0.23877645752267207,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #17",
+   "param": "bhh",
+   "L": 0.8,
+   "T": 3.755985354371563,
+   "lambda_max": 17.337374668058665,
+   "r_min": 0.24308230584326812,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #18",
+   "param": "bhh",
+   "L": 0.935548917,
+   "T": 4.765849014383888,
+   "lambda_max": 149.97106787129647,
+   "r_min": 0.1721981181186322,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #19",
+   "param": "bhh",
+   "L": 0.7,
+   "T": 15.237293600616393,
+   "lambda_max": 220.99490349598997,
+   "r_min": 0.7594705160184608,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #20",
+   "param": "bhh",
+   "L": 0.85,
+   "T": 4.2355987172936835,
+   "lambda_max": 16.242166551481287,
+   "r_min": 0.2634229231847109,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #21",
+   "param": "bhh",
+   "L": 0.9,
+   "T": 4.905476485513708,
+   "lambda_max": 15.835314338641261,
+   "r_min": 0.29054145957646443,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #22",
+   "param": "bhh",
+   "L": 0.935548917,
+   "T": 4.759085083059586,
+   "lambda_max": 16.641223437400118,
+   "r_min": 0.1711955307153613,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #23",
+   "param": "bhh",
+   "L": 0.8,
+   "T": 3.6421294174844747,
+   "lambda_max": 16.854707856160765,
+   "r_min": 0.21804936210922338,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #24",
+   "param": "bhh",
+   "L": 0.935548917,
+   "T": 4.7804667728084995,
+   "lambda_max": 22.294806590423523,
+   "r_min": 0.18794135210019683,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #25",
+   "param": "bhh",
+   "L": 0.85,
+   "T": 4.077427987870233,
+   "lambda_max": 15.64068267367233,
+   "r_min": 0.2351496028504928,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #26",
+   "param": "bhh",
+   "L": 0.9,
+   "T": 4.670406032348156,
+   "lambda_max": 15.054203838686188,
+   "r_min": 0.25746202762172193,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #27",
+   "param": "bhh",
+   "L": 0.935548917,
+   "T": 4.783709791597033,
+   "lambda_max": 104.31833270800396,
+   "r_min": 0.1876686537174891,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #28",
+   "param": "bhh",
+   "L": 1.0,
+   "T": 4.768011857241451,
+   "lambda_max": 9.292185571944788,
+   "r_min": 0.09391070009847326,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #29",
+   "param": "bhh",
+   "L": 1.0,
+   "T": 6.992744646748151,
+   "lambda_max": 16.641537753793127,
+   "r_min": 0.3368571132621651,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #30",
+   "param": "bhh",
+   "L": 0.85,
+   "T": 3.95629337521693,
+   "lambda_max": 15.163269833004003,
+   "r_min": 0.213193672754236,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #31",
+   "param": "bhh",
+   "L": 1.0,
+   "T": 6.469694254637294,
+   "lambda_max": 15.298759355747979,
+   "r_min": 0.29591493326600604,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #32",
+   "param": "bhh",
+   "L": 1.0,
+   "T": 4.785972933445607,
+   "lambda_max": 10.385641108605107,
+   "r_min": 0.0954364635594002,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #33",
+   "param": "bhh",
+   "L": 0.7,
+   "T": 6.6668402514524026,
+   "lambda_max": 629.3692854654606,
+   "r_min": 0.08505009977064396,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #34",
+   "param": "bhh",
+   "L": 0.8,
+   "T": 3.4816816426303143,
+   "lambda_max": 16.11884137793783,
+   "r_min": 0.18255386312899258,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #35",
+   "param": "bhh",
+   "L": 1.0,
+   "T": 4.799859623955609,
+   "lambda_max": 11.62413794273418,
+   "r_min": 0.09826233366747009,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #36",
+   "param": "bhh",
+   "L": 0.8,
+   "T": 3.4223948909560646,
+   "lambda_max": 15.826599298626594,
+   "r_min": 0.16942865066378368,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #37",
+   "param": "bhh",
+   "L": 0.935548917,
+   "T": 4.681696071102993,
+   "lambda_max": 13.272083477634418,
+   "r_min": 0.208882564526824,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #38",
+   "param": "bhh",
+   "L": 1.0,
+   "T": 4.810936259004038,
+   "lambda_max": 13.046596339268097,
+   "r_min": 0.10167854294798029,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #39",
+   "param": "bhh",
+   "L": 0.8,
+   "T": 3.3723242260150115,
+   "lambda_max": 15.57260806101597,
+   "r_min": 0.1583616866049829,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #40",
+   "param": "bhh",
+   "L": 0.935548917,
+   "T": 4.563922947106598,
+   "lambda_max": 12.868905450648022,
+   "r_min": 0.19384709747582904,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #41",
+   "param": "bhh",
+   "L": 1.0,
+   "T": 4.819988701571236,
+   "lambda_max": 14.709343897465283,
+   "r_min": 0.10542660832617268,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #42",
+   "param": "bhh",
+   "L": 0.8,
+   "T": 3.329336937685709,
+   "lambda_max": 15.342183490625468,
+   "r_min": 0.14888913345026378,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #43",
+   "param": "bhh",
+   "L": 1.0,
+   "T": 5.449095161868932,
+   "lambda_max": 12.5226078645903,
+   "r_min": 0.20687702611944822,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #44",
+   "param": "bhh",
+   "L": 0.85,
+   "T": 3.60999926956463,
+   "lambda_max": 13.64431203225264,
+   "r_min": 0.1496246786530863,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #45",
+   "param": "bhh",
+   "L": 1.0,
+   "T": 5.306789492936339,
+   "lambda_max": 12.104735545600144,
+   "r_min": 0.193506636346048,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #46",
+   "param": "bhh",
+   "L": 1.0,
+   "T": 4.8339154609237225,
+   "lambda_max": 19.157240183580914,
+   "r_min": 0.11322357067732584,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #47",
+   "param": "bhh",
+   "L": 0.85,
+   "T": 3.567367224221621,
+   "lambda_max": 13.431654234334717,
+   "r_min": 0.1417951944811638,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #48",
+   "param": "bhh",
+   "L": 0.9,
+   "T": 3.909237422092067,
+   "lambda_max": 12.182449117911725,
+   "r_min": 0.14441260197993291,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #49",
+   "param": "bhh",
+   "L": 0.935548917,
+   "T": 4.191144050139617,
+   "lambda_max": 11.478182279242295,
+   "r_min": 0.14531363497805394,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #50",
+   "param": "bhh",
+   "L": 1.0,
+   "T": 4.914314648027863,
+   "lambda_max": 10.882401739483111,
+   "r_min": 0.15557648393492673,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #51",
+   "param": "bhh",
+   "L": 1.03,
+   "T": 5.317219347653107,
+   "lambda_max": 10.714254472355496,
+   "r_min": 0.15817004270683863,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #52",
+   "param": "bhh",
+   "L": 1.03,
+   "T": 5.236753150004514,
+   "lambda_max": 10.471123126705457,
+   "r_min": 0.15131994717702849,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #53",
+   "param": "bhh",
+   "L": 1.03,
+   "T": 5.164615519419256,
+   "lambda_max": 10.248951868324449,
+   "r_min": 0.14513980613589106,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #54",
+   "param": "bhh",
+   "L": 1.07,
+   "T": 5.93058960149239,
+   "lambda_max": 10.573881248880316,
+   "r_min": 0.15914470368157438,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #55",
+   "param": "bhh",
+   "L": 1.03,
+   "T": 5.099490469176167,
+   "lambda_max": 10.044662133249942,
+   "r_min": 0.13953134355564703,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #56",
+   "param": "bhh",
+   "L": 1.07,
+   "T": 5.8367901524085575,
+   "lambda_max": 10.32183957412656,
+   "r_min": 0.15266498438720166,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #57",
+   "param": "bhh",
+   "L": 1.03,
+   "T": 5.0403329670551935,
+   "lambda_max": 9.855785171049172,
+   "r_min": 0.1344150817248876,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #58",
+   "param": "bhh",
+   "L": 1.07,
+   "T": 5.752380342463694,
+   "lambda_max": 10.091328846015491,
+   "r_min": 0.14678429193688713,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #59",
+   "param": "bhh",
+   "L": 1.07,
+   "T": 5.675922712491879,
+   "lambda_max": 9.879252949133491,
+   "r_min": 0.14141897197667672,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #60",
+   "param": "bhh",
+   "L": 1.07,
+   "T": 5.606267427593008,
+   "lambda_max": 9.683115833883825,
+   "r_min": 0.13650071083484083,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #61",
+   "param": "bhh",
+   "L": 1.07,
+   "T": 5.5424825473502795,
+   "lambda_max": 9.500882368952695,
+   "r_min": 0.13197309840901683,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #62",
+   "param": "bhh",
+   "L": 1.07,
+   "T": 5.483803872782468,
+   "lambda_max": 9.330868772832797,
+   "r_min": 0.12778909105994307,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #63",
+   "param": "bhh",
+   "L": 1.07,
+   "T": 5.429598205596677,
+   "lambda_max": 9.171673108565438,
+   "r_min": 0.12390910762314009,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #64",
+   "param": "bhh",
+   "L": 1.03,
+   "T": 4.772751583014193,
+   "lambda_max": 8.95495460818718,
+   "r_min": 0.11107903972730136,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #65",
+   "param": "bhh",
+   "L": 1.07,
+   "T": 5.379335958235357,
+   "lambda_max": 9.022111333768008,
+   "r_min": 0.12029957858136052,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #66",
+   "param": "bhh",
+   "L": 1.03,
+   "T": 4.738513778687194,
+   "lambda_max": 8.833304200541184,
+   "r_min": 0.10807912994392439,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #67",
+   "param": "bhh",
+   "L": 1.07,
+   "T": 5.332570443769242,
+   "lambda_max": 8.881176578192564,
+   "r_min": 0.11693182618147725,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #68",
+   "param": "bhh",
+   "L": 1.03,
+   "T": 4.706421050655236,
+   "lambda_max": 8.717751416243615,
+   "r_min": 0.10526632619106441,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #69",
+   "param": "bhh",
+   "L": 1.07,
+   "T": 5.288922001939951,
+   "lambda_max": 8.74801342359979,
+   "r_min": 0.11378118943223574,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #70",
+   "param": "bhh",
+   "L": 1.03,
+   "T": 4.676261983650785,
+   "lambda_max": 8.607753626732157,
+   "r_min": 0.10262284504262736,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #71",
+   "param": "bhh",
+   "L": 1.07,
+   "T": 5.2480656599955084,
+   "lambda_max": 8.621874037771848,
+   "r_min": 0.11082633262501324,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #72",
+   "param": "bhh",
+   "L": 1.03,
+   "T": 4.647852937295201,
+   "lambda_max": 8.502848670954267,
+   "r_min": 0.1001331578286086,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #73",
+   "param": "bhh",
+   "L": 1.07,
+   "T": 5.209721475051764,
+   "lambda_max": 8.502114150009486,
+   "r_min": 0.10804869421896877,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #74",
+   "param": "bhh",
+   "L": 1.03,
+   "T": 4.621033530857771,
+   "lambda_max": 8.402609825155452,
+   "r_min": 0.09778357748485358,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "Jankovic #75",
+   "param": "bhh",
+   "L": 1.07,
+   "T": 5.173646869962235,
+   "lambda_max": 8.388181793191936,
+   "r_min": 0.10543204303569105,
+   "is_stable": false,
+   "discovered": false
+  },
+  {
+   "name": "discovered stable b^3",
+   "param": "bhh",
+   "L": 0.8308,
+   "T": 4.880107,
+   "lambda_max": 1.0000000000005,
+   "r_min": 0.3485838441350947,
+   "is_stable": true,
+   "discovered": true
+  }
+ ],
+ "corr_all": {
+  "loglam_vs_rmin": {
+   "spearman": 0.0556381872507338,
+   "pearson": -0.10079630788128272
+  },
+  "loglam_vs_logrmin": {
+   "spearman": 0.0556381872507338,
+   "pearson": 0.0479754591001019
+  },
+  "rmin_vs_L": {
+   "spearman": -0.23731287851219446,
+   "pearson": -0.21485693058024938
+  },
+  "loglam_vs_L": {
+   "spearman": 0.32371860173562406,
+   "pearson": 0.5063003631770819
+  }
+ },
+ "corr_bhh": {
+  "loglam_vs_rmin": {
+   "spearman": 0.5595625427204374,
+   "pearson": 0.23937473059412043
+  },
+  "rmin_vs_L": {
+   "spearman": -0.526018047293165,
+   "pearson": -0.5200703970057133
+  },
+  "loglam_vs_L": {
+   "spearman": -0.7869591731754647,
+   "pearson": -0.6507338613140613
+  }
+ }
+}
