@@ -80,6 +80,7 @@ def main():
     parser.add_argument("--max-steps", type=int, dest="max_steps", default=60)
     parser.add_argument("--orbits", type=int, nargs="*", default=SELECTED)
     parser.add_argument("--workers", type=int, default=mp.cpu_count())
+    parser.add_argument("--out", type=str, default="window_hunt.json")
     args = parser.parse_args()
 
     print(f"=== Stable-window hunt: families {args.orbits}, "
@@ -97,9 +98,9 @@ def main():
               f"[{r['L_range'][0]:.3f},{r['L_range'][1]:.3f}], "
               f"{r['n_stable_points']} stable pts ({r['seconds']:.0f}s){flag}")
 
-    with open("window_hunt.json", "w") as f:
+    with open(args.out, "w") as f:
         json.dump(results, f, indent=1)
-    print("\nSaved: window_hunt.json")
+    print(f"\nSaved: {args.out}")
 
     winners = [r for r in results if not r.get("error") and r["n_stable_points"]]
     near = [r for r in results if not r.get("error")
