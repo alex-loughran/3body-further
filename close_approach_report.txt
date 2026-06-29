@@ -1,0 +1,20 @@
+computed r_min for 111 orbits
+
+=== Correlations (all orbits) ===
+  log10(lambda_max) vs r_min                 Spearman=+0.056  Pearson=-0.101
+  log10(lambda_max) vs log10(r_min)          Spearman=+0.056  Pearson=+0.048
+  r_min vs L                                 Spearman=-0.237  Pearson=-0.215
+  log10(lambda_max) vs L                     Spearman=+0.324  Pearson=+0.506
+
+=== BHH (L != 0) only ===
+  log10(lambda_max) vs r_min                 Spearman=+0.560  Pearson=+0.239
+  r_min vs L                                 Spearman=-0.526  Pearson=-0.520
+  log10(lambda_max) vs L                     Spearman=-0.787  Pearson=-0.651
+
+=== Interpretation hint ===
+  BHH: |corr(logλ, r_min)|=0.560 vs |corr(logλ, L)|=0.787 -> L is the stronger predictor
+
+  Discovered stable b^3: r_min=0.3486, L=0.8308, lambda_max~1. (r_min percentile among BHH: 92%)
+
+Saved: close_approach.json
+Plot: close_approach.png

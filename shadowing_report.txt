@@ -1,0 +1,13 @@
+refined: a=0.2464855457 c=-2.035289849 T=4.880106906 ok=True
+reference loop: 600 samples, Z-extent ~8.913
+
+Integrating 10000 periods per amplitude (chunk 100)...
+  1e-4 (KAM)                       eps=1e-04: d0~1.18e-01 dmax=1.40e-01 dfinal~1.25e-01 growth=1.06 -> BOUNDED (178s)
+  1e-3 (KAM)                       eps=1e-03: d0~1.42e-01 dmax=1.65e-01 dfinal~1.36e-01 growth=0.96 -> BOUNDED (161s)
+  3e-2 (control: should escape)    eps=3e-02: d0~2.76e+00 dmax=7.78e+00 dfinal~2.20e+00 growth=0.80 -> ESCAPES (736s)
+
+Saved: shadowing.json
+
+=== Verdict ===
+  KAM-region perturbations stay BOUNDED over 10000 periods; the large control escapes (so the test can detect escape). -> nonlinear confinement confirmed.
+Plot: shadowing.png

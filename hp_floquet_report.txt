@@ -1,0 +1,40 @@
+  double-refine: a=0.246485545742354 c=-2.03528984909947 T=4.88010690649208 converged=True, Z-residual=3.30e-13 (this is the floor)
+=== High-precision Floquet: dps=35, delta=1e-22 ===
+  base integration done (86s); building 12 columns of M...
+    column 1/12 done (170s)
+    column 2/12 done (257s)
+    column 3/12 done (348s)
+    column 4/12 done (434s)
+    column 5/12 done (522s)
+    column 6/12 done (611s)
+    column 7/12 done (698s)
+    column 8/12 done (787s)
+    column 9/12 done (878s)
+    column 10/12 done (968s)
+    column 11/12 done (1055s)
+    column 12/12 done (1140s)
+
+  det(M)               = 1.0000000000002814811  (should be 1)
+  |lambda|_max (ALL)   = 1.000000221169425  <- inflated by trivial Jordan split ~ sqrt(STM err) = 5.305e-7
+
+  TRIVIAL (angle<0.05, the +1 symmetry block):
+    |lam|=1.000000005989963    angle=+0.0000
+    |lam|=0.9999999940100364   angle=-0.0000
+    |lam|=1.000000221169425    angle=-0.0000
+    |lam|=0.9999997788305856   angle=+0.0000
+  PHYSICAL multipliers (angle>=0.05):
+    |lam|=1.000000000000056    angle=-0.2249  ||lam|-1|=5.647e-14
+    |lam|=1.000000000000056    angle=+0.2249  ||lam|-1|=5.647e-14
+    |lam|=0.9999999999995066   angle=-0.3384  ||lam|-1|=4.934e-13
+    |lam|=0.9999999999995066   angle=+0.3384  ||lam|-1|=4.934e-13
+    |lam|=1.000000000000532    angle=-0.4846  ||lam|-1|=5.321e-13
+    |lam|=1.000000000000532    angle=+0.4846  ||lam|-1|=5.321e-13
+    |lam|=1.000000000000065    angle=-2.5455  ||lam|-1|=6.5e-14
+    |lam|=1.000000000000065    angle=+2.5455  ||lam|-1|=6.5e-14
+
+  |lambda|_max (PHYSICAL) - 1 = 5.32127e-13
+  double-precision |lambda|_max = 1.0000002 (cross-check)
+
+  VERDICT: PHYSICAL multipliers on the unit circle to ~1e-12 -> linearly stable; the larger deviations are the trivial +1 Jordan block (= sqrt of STM error), not instability
+
+  Saved: hp_floquet.json (+ hp_monodromy.json)
