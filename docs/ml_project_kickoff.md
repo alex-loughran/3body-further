@@ -221,7 +221,46 @@ machinery that twice OOM-killed a 16 GB machine (see `docs/memory_incident.md`).
 
 ---
 
-## 10. Decision log & open gates
+## 10. Running this project (terminal vs IDE)
+
+**Recommendation: run Claude Code in the standard terminal, not inside PyCharm.**
+On this 16 GB machine the IDE was a major share of the 50 GB OOM — its JVM heap
+plus the indexer churning over generated data files. The RAM math is the whole
+argument:
+
+| Setup | RAM floor before any work |
+| --- | --- |
+| Terminal + Claude Code | OS ~3–4 GB → **~12 GB free** |
+| PyCharm + Claude Code | OS + JVM (3–5 GB) + indexer spikes → **~7–9 GB free** |
+
+That 4–5 GB delta decides whether a label sweep finishes or swaps the box.
+Claude Code is identical in both (same tools, clickable paths in iTerm2/modern
+terminals), so the IDE buys you nothing on Claude's side — and it's *worse* for
+ML than for the physics repo, because ML repos spew datasets, checkpoints, and
+logs that the indexer re-scans on every change.
+
+**Pragmatic split:**
+- Heavy Claude sessions (label generation, active-learning loops, training) →
+  **terminal**.
+- Focused editing/debugging of a module → open PyCharm (or lighter, VS Code)
+  **separately and deliberately, then close it** before launching a big run.
+- Never run a heavy job with the IDE open on top — that's the configuration that
+  failed twice.
+
+**If you stay in PyCharm anyway** (survivable now that `memguard` caps the Python
+side, but do both first):
+1. Mark data dirs **Excluded** (right-click → Mark Directory as → Excluded):
+   `data/`, `results/`, checkpoints, `*.parquet`/`*.npz`/`*.csv` — stops indexer
+   churn.
+2. Cap the JVM heap: Help → Change Memory Settings → ~2 GB max — bounds the IDE's
+   own growth and frees a couple GB.
+
+Either way: `pip install -e` the physics repo into this project's environment so
+`memguard` (Section 9) ships with it and the guardrail is always available.
+
+---
+
+## 11. Decision log & open gates
 
 - **Method:** classical (GP / gradient boosting) for load-bearing tasks; DL only
   on raw-dynamics representation learning. (Decided 2026-06-16.)
