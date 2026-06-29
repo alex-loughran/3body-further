@@ -155,8 +155,14 @@ def trace_family(a, c, T, L, L_min=None, L_max=None, ds0=0.02,
         steps = fails = 0
         while steps < max_steps:
             x_pred = x_prev + ds * t_prev * SCALES
-            x_new, res, M_new, G_new, n_it, ok = _correct(
-                x_pred, t_prev, ds, x_prev, b)
+            try:
+                x_new, res, M_new, G_new, n_it, ok = _correct(
+                    x_pred, t_prev, ds, x_prev, b)
+            except (RuntimeError, FloatingPointError):
+                # integration blew up (e.g. near-collision past the family
+                # boundary) -- treat like a corrector failure: shrink ds and,
+                # if it can't recover, stop this direction gracefully here.
+                ok = False
             if not ok:
                 fails += 1
                 ds /= 2

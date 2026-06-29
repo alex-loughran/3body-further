@@ -79,6 +79,12 @@ See `ROADMAP.md` for the full plan. Current status: Phases 1-2 complete, Phase 3
 - Li & Liao, Sci. China Phys. Mech. Astron. 60:129511, 2017 (695 families, arXiv: 1705.00527)
 - Montgomery, Nonlinearity 11(2):363-376, 1998 (free group / braid group classification)
 
+## Running jobs safely (16 GB machine)
+- The dev box is a **16 GB / 8-core M2**. RAM headroom, not core count, is the binding limit. Two OOM-forced shutdowns have happened from Claude-launched jobs.
+- **Do not run two heavy multiprocessing jobs concurrently** (scans, census, reproduce). Serialise them. Each job's memory watchdog only sees its own process tree, so concurrent jobs can still exceed physical RAM.
+- `memguard.py` is wired into `scanner.scan_parallel`, `bk_bias.run_census`, and `reproduce.py`: a process-tree RSS watchdog (default ceiling ≈60% of RAM) aborts a runaway before it swaps the box, and `safe_worker_count()` sizes pools by RAM (≈4 workers here, not 8). New parallel entry points should `import memguard; memguard.install()` and size pools with `memguard.safe_worker_count()`.
+- Tune via env vars: `THREEBODY_MAX_WORKERS`, `THREEBODY_MEM_LIMIT_GB`.
+
 ## Notes for Claude
 - The user has limited dynamical systems / chaos theory background but strong computational skills (Python, NumPy, SciPy). Explain dynamics concepts concretely — tie to things in the codebase rather than abstract theory.
 - The user prefers direct, critical feedback. Don't sugarcoat.

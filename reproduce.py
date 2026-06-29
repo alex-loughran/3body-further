@@ -184,7 +184,9 @@ def main():
     if args.quick:
         cases = [c for c in cases if c["name"] in QUICK_NAMES]
 
-    n_workers = args.workers or min(mp.cpu_count(), len(cases))
+    import memguard
+    memguard.install()             # watchdog: abort tree before it swaps the box
+    n_workers = args.workers or min(memguard.safe_worker_count(), len(cases))
     print(f"=== Reproduction suite: {len(cases)} known orbits, "
           f"{n_workers} workers ===\n")
 

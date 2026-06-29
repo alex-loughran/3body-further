@@ -92,6 +92,9 @@ def scan_parallel(row_vals, col_vals, state_builder, T_max=8.0,
     rpf_map : (len(row_vals), len(col_vals)) array
         Contains -log10(d_min) at each grid point. NaN for skipped/failed points.
     """
+    import memguard
+    memguard.install()             # watchdog: abort tree before it swaps the box
+
     n_rows = len(row_vals)
     n_cols = len(col_vals)
     rpf_map = np.full((n_rows, n_cols), np.nan)
@@ -110,18 +113,24 @@ def scan_parallel(row_vals, col_vals, state_builder, T_max=8.0,
                 print(f"Could not resume from saved file ({e}), starting fresh")
 
     if n_workers is None:
-        n_workers = mp.cpu_count()
+        # Size by RAM headroom, not core count: cpu_count() workers of
+        # scipy/numba (~0.5-1 GB each) oversubscribe a 16 GB box and, run
+        # two-at-a-time, drive it into swap. safe_worker_count leaves the OS
+        # and IDE room. Override with THREEBODY_MAX_WORKERS.
+        n_workers = memguard.safe_worker_count()
 
-    # Build argument tuples — just indices + parameter values, no heavy data
-    all_args = []
-    for i, row_val in enumerate(row_vals):
-        if i in completed_rows:
-            continue
-        for j, col_val in enumerate(col_vals):
-            all_args.append((i, j, row_val, col_val, state_builder,
-                             T_max, n_samples, t_min_frac))
+    # Stream argument tuples lazily instead of materialising the whole grid
+    # (O(n_rows*n_cols) tuples) in the parent — imap pulls them on demand.
+    rows_to_do = [i for i in range(n_rows) if i not in completed_rows]
+    total_points = len(rows_to_do) * n_cols
 
-    total_points = len(all_args)
+    def gen_args():
+        for i in rows_to_do:
+            row_val = row_vals[i]
+            for j, col_val in enumerate(col_vals):
+                yield (i, j, row_val, col_val, state_builder,
+                       T_max, n_samples, t_min_frac)
+
     if total_points == 0:
         if verbose:
             print("  All rows already completed")
@@ -142,7 +151,7 @@ def scan_parallel(row_vals, col_vals, state_builder, T_max=8.0,
     rows_since_save = 0
 
     with mp.Pool(n_workers) as pool:
-        for i, j, rpf_val in pool.imap_unordered(_evaluate_point, all_args):
+        for i, j, rpf_val in pool.imap_unordered(_evaluate_point, gen_args()):
             rpf_map[i, j] = rpf_val
             points_done += 1
             pending_per_row[i] -= 1

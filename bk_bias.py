@@ -229,8 +229,10 @@ def _census_point(args):
 def run_census(planes, n_grid=100, n_workers=None, save_path="bk_bias_census.npz"):
     """Census every plane in `planes`: list of (label, builder, row_range,
     col_range). Saves all classification maps to one npz."""
+    import memguard
+    memguard.install()             # watchdog: abort tree before it swaps the box
     if n_workers is None:
-        n_workers = mp.cpu_count()
+        n_workers = memguard.safe_worker_count()
 
     out = {}
     for label, builder, row_range, col_range in planes:

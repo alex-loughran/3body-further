@@ -1,0 +1,8 @@
+
+============================================================
+PERIOD-DOUBLED BRANCH (attempt #3, LM corrector)
+============================================================
+  L_PD (lambda=-1 crossing): 0.8310640
+  daughter found at L=0.831664, P=9.72169
+  daughter lambda_max=5.189 (UNSTABLE)
+  branch traced over 26 points in L
