@@ -1,0 +1,50 @@
+[
+ {
+  "L": 0.935,
+  "word": "b^10",
+  "a": 0.18017526613994692,
+  "c": -1.9353814121307065,
+  "T": 4.796975780003216,
+  "method": "arclength",
+  "n_points": 207,
+  "L_range": [
+   0.934,
+   1.139
+  ],
+  "min_dist_to_jankovic": 0.0044,
+  "nearest_on_family": "#27 b^9 @L0.936",
+  "verdict": "CONNECTS #27 (b^9 @L0.936)"
+ },
+ {
+  "L": 0.935,
+  "word": "b^8",
+  "a": 0.22353179466504866,
+  "c": -1.7897747931109949,
+  "T": 5.567851949838416,
+  "method": "arclength",
+  "n_points": 233,
+  "L_range": [
+   0.452,
+   1.043
+  ],
+  "min_dist_to_jankovic": 0.0,
+  "nearest_on_family": "#21 b^8 @L0.900",
+  "verdict": "CONNECTS #21 (b^8 @L0.9)"
+ },
+ {
+  "L": 0.85,
+  "word": "b^5",
+  "a": 0.31361014988857927,
+  "c": -1.5239430242955467,
+  "T": 5.332901216565433,
+  "method": "arclength",
+  "n_points": 321,
+  "L_range": [
+   0.504,
+   1.042
+  ],
+  "min_dist_to_jankovic": 0.0056,
+  "nearest_on_family": "#8 b^5 @L0.800",
+  "verdict": "CONNECTS #8 (b^5 @L0.8)"
+ }
+]

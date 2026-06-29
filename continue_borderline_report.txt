@@ -1,0 +1,18 @@
+
+================================================================
+L-CONTINUATION SUMMARY (borderline orbits)
+================================================================
+  CONNECTS to a Jankovic family (NOT new): 6
+  INDEPENDENT (genuinely new family):      4
+  TRACE-FAIL:                              0
+
+  L=0.85   b^11  ->  CONNECTS #34 (b^11 @L0.8)
+  L=0.9   b^12  ->  CONNECTS #37 (b^12 @L0.935548917)
+  L=0.9   b^13  ->  INDEPENDENT
+  L=0.9   b^15  ->  INDEPENDENT
+  L=0.9   b^16  ->  CONNECTS #47 (b^16 @L0.85)
+  L=0.9   b^23  ->  CONNECTS #37 (b^12 @L0.935548917)
+  L=0.9    b^6  ->  CONNECTS #10 (b^6 @L0.8)
+  L=0.935   b^16  ->  INDEPENDENT
+  L=1.0   b^17  ->  INDEPENDENT
+  L=1.0    b^8  ->  CONNECTS #20 (b^8 @L0.85)

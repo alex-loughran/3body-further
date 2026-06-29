@@ -1,0 +1,154 @@
+========================================================================
+DEDUP + CLASSIFY: 500x500 BHH campaign candidates
+========================================================================
+Raw converged candidates:        102
+Collapsed as (L,a,c) duplicates: 2
+Distinct orbits:                 100
+
+Classification of distinct orbits:
+  REDISCOVERY            7
+  MULTIPLE               6
+  LIKELY-MULTIPLE        6
+  SAME-AC-ODD-T          1
+  NEW-SAME-K-FAMILY     20
+  EXTENSION             30
+  BEYOND-CATALOGUE      30
+
+  (of which suspect k>=60, near-collision): 28
+  (of which positive-c band):           16
+
+Already-known (rediscovery or multiple of a Jankovic orbit): 19
+Candidate NEW (not a Jankovic orbit or multiple):           81
+  -> of those, trustworthy (k<60, negative-c band):   51
+
+  -> NOTE: 56 of the 'new' have an UNRELIABLE word (read k disagrees with Kepler-law k); their k is noise.
+
+--- distinct orbits by L (sorted). k_read vs k_law (Kepler) ---
+    L  k_rd k_law    T*       T     lam            class  T/Tj                     note
+ 0.65    23    19  2.03   2.558    26.5        EXTENSION                 #7 b^4(5.3425)   !w
+ 0.65    43    36  2.05   5.138   103.4 BEYOND-CATALOGUE                 #7 b^4(5.2571)   !w
+  0.7    26    21   2.0   2.677    18.6        EXTENSION                 #1 b^3(2.1582)   !w
+  0.8     6     7  2.66   4.128    18.9      REDISCOVERY   1.0             #10 b^6(0.0)  
+  0.8    11    10  2.31   3.492    19.8      REDISCOVERY 1.003         #34 b^11(0.0002)  
+  0.8    23    19  2.03   3.104    13.9        EXTENSION               #42 b^14(0.5678)   !w
+  0.8    25    21  2.01   3.076    15.2        EXTENSION               #42 b^14(0.6711)   !w
+  0.8    30    24  1.96   3.015    13.2        EXTENSION               #42 b^14(0.9057)   !w
+  0.8    32    31  2.33  10.512   162.0  LIKELY-MULTIPLE 3.019            ~3x 34 (b^11)  
+  0.8    37    32   2.1   6.390    72.7        EXTENSION               #42 b^14(0.3095)   !w
+  0.8    35    33  2.28  10.323   159.4         MULTIPLE 3.016                    3x 36  
+  0.8    41    35  2.07   6.297    63.2        EXTENSION               #42 b^14(0.4293)   !w
+  0.8    85    72  2.06  12.536   256.9 BEYOND-CATALOGUE               #42 b^14(0.4721) * !w
+  0.8   163   127   1.9   6.781    31.1 BEYOND-CATALOGUE                 #8 b^5(2.7274) * !w
+  0.8   228   177  1.89   9.094    50.0 BEYOND-CATALOGUE                 #8 b^5(2.6712) * !w
+  0.8   383   293  1.86  13.621   236.1 BEYOND-CATALOGUE                 #8 b^5(2.9769) * !w
+ 0.85     5     6  2.79   5.333    20.3 NEW-SAME-K-FAMILY                #14 b^7(0.3236)  
+ 0.85     7     7  2.56   4.453    17.0      REDISCOVERY   1.0             #14 b^7(0.0)  
+ 0.85    11    10  2.31   3.860    14.8 NEW-SAME-K-FAMILY               #30 b^10(0.0953)  
+ 0.85    18    16  2.11   3.496    13.1 NEW-SAME-K-FAMILY               #47 b^16(0.1314)  
+ 0.85    22    18  2.05   3.390    12.4        EXTENSION               #47 b^16(0.3649)   !w
+ 0.85    25    21  2.01   3.332    12.1        EXTENSION               #47 b^16(0.5205)   !w
+ 0.85    82    67  1.98   9.887   136.4 BEYOND-CATALOGUE               #47 b^16(0.6326) * !w
+ 0.85    94    75  1.95   9.724   119.7 BEYOND-CATALOGUE               #47 b^16(0.8096) * !w
+ 0.85   161   126   1.9   7.063    46.1 BEYOND-CATALOGUE                 #14 b^7(3.103) * !w
+ 0.85   221   167  1.83   7.160    31.9 BEYOND-CATALOGUE                #14 b^7(3.0424) * !w
+  0.9     6     7  2.66   5.785    18.7 NEW-SAME-K-FAMILY                #16 b^7(0.1387)  
+  0.9     9     9  2.41   4.670    15.1      REDISCOVERY   1.0             #26 b^9(0.0)  
+  0.9    12    11  2.27   4.249    13.6        EXTENSION                #15 b^7(0.0589)  
+  0.9    13    12  2.24   4.167    16.7        EXTENSION                #11 b^6(0.0859)  
+  0.9    15    13  2.18   4.022    15.7        EXTENSION                #11 b^6(0.0867)  
+  0.9    16    14  2.15   3.959    12.4        EXTENSION               #48 b^17(0.0667)  
+  0.9    19    16  2.09   3.828    14.1 NEW-SAME-K-FAMILY               #48 b^17(0.1249)   !w
+  0.9    23    19  2.03   3.699    11.2        EXTENSION               #48 b^17(0.3482)   !w
+  0.9    26    21   2.0   3.629    10.8        EXTENSION               #48 b^17(0.4975)   !w
+  0.9    27    22  1.99   3.609    10.7        EXTENSION               #48 b^17(0.5445)   !w
+  0.9    23    22  2.29   8.603    61.3        EXTENSION                 #15 b^7(0.031)  
+  0.9    33    26  1.94   3.512    11.4        EXTENSION                #48 b^17(0.803)   !w
+  0.9    43    36  2.05   7.482    51.9 BEYOND-CATALOGUE               #48 b^17(0.2681)   !w
+  0.9    51    40  1.91   2.478     4.5 BEYOND-CATALOGUE                #16 b^7(2.4898) +c !w
+  0.9    59    48  1.96   7.130    53.9 BEYOND-CATALOGUE               #48 b^17(0.6568)   !w
+  0.9    74    61  2.01  10.981   131.2 BEYOND-CATALOGUE               #48 b^17(0.4328) * !w
+  0.9   104    82  1.93  10.468   106.5 BEYOND-CATALOGUE               #48 b^17(0.8688) * !w
+  0.9   123   228  1.83   4.975    14.1 BEYOND-CATALOGUE                #16 b^7(2.6007) * !w
+0.935     5     6  2.75   4.687   373.0        EXTENSION                #18 b^8(0.1814)  
+0.935     8     8  2.48   5.568    16.1 NEW-SAME-K-FAMILY                #24 b^9(0.2752)  
+0.935    10    10  2.34   4.797    40.0 NEW-SAME-K-FAMILY               #37 b^12(0.2591)  
+0.935    16    14  2.15   4.309    15.0 NEW-SAME-K-FAMILY                #27 b^9(0.0549)  
+0.935    24    20  2.02   3.953    12.4        EXTENSION                #18 b^8(0.2429)   !w
+0.935    30    24  1.96   3.808     9.8        EXTENSION                #18 b^8(0.5183)   !w
+0.935    27    25  2.22   9.028    71.7  LIKELY-MULTIPLE 1.978            ~2x 40 (b^13)  
+0.935    37    34  2.26  13.898   134.6         MULTIPLE 2.969                    3x 37  
+0.935    44    40  2.19  13.206   127.5 BEYOND-CATALOGUE               #40 b^13(0.1288)  
+0.935    52    45  2.12  12.679   146.3  LIKELY-MULTIPLE 3.025            ~3x 49 (b^18)  
+0.935   110    86  1.91  11.099    99.5 BEYOND-CATALOGUE                #18 b^8(0.7819) * !w
+0.935   115    93  1.97  15.337   215.3 BEYOND-CATALOGUE                #18 b^8(0.4644) * !w
+0.935   125   100  1.95  15.142   209.1 BEYOND-CATALOGUE                #18 b^8(0.5707) * !w
+0.935    34   183   2.0   2.497     6.4 BEYOND-CATALOGUE                #22 b^8(2.4648) +c !w
+  1.0     8     8  2.48   7.839    18.8 NEW-SAME-K-FAMILY               #46 b^15(0.1091)  
+  1.0    14    13   2.2   5.449    12.5      REDISCOVERY   1.0            #43 b^14(0.0)  
+  1.0    17    15  2.13   5.089    14.9 NEW-SAME-K-FAMILY               #50 b^19(0.1257)  
+  1.0    24    20  2.02   4.626     9.9 NEW-SAME-K-FAMILY               #50 b^19(0.2712)   !w
+  1.0    26    21   2.0   4.545    11.7        EXTENSION               #50 b^19(0.3673)   !w
+  1.0    28    23  1.98   4.472     9.3        EXTENSION               #50 b^19(0.4586)   !w
+  1.0    29    23  1.97   4.442    11.0        EXTENSION                #50 b^19(0.502)   !w
+  1.0    36    28  1.92   4.267     9.9        EXTENSION               #50 b^19(0.7804)   !w
+  1.0    31    28  2.17  10.503    69.2  LIKELY-MULTIPLE 1.927            ~2x 43 (b^14)  
+  1.0    35    31  2.12  10.074    51.4  LIKELY-MULTIPLE  2.05            ~2x 50 (b^19)  
+  1.0    65    52  1.94   8.691    48.1 BEYOND-CATALOGUE               #50 b^19(0.6467) * !w
+  1.0    69    55  1.93   8.595    40.9 BEYOND-CATALOGUE               #50 b^19(0.7244) * !w
+  1.0    75    59  1.91   8.475    45.3 BEYOND-CATALOGUE               #50 b^19(0.8348) * !w
+  1.0    92    74  1.95  13.176    98.0 BEYOND-CATALOGUE               #50 b^19(0.5726) * !w
+  1.0   124    96  1.89  12.514   100.6 BEYOND-CATALOGUE               #50 b^19(0.9671) * !w
+  1.0   152   120  1.91   8.227    25.3 BEYOND-CATALOGUE                #28 b^9(2.0747) * !w
+  1.0   260   193   1.8   8.459    15.6 BEYOND-CATALOGUE                #28 b^9(2.0119) * !w
+ 1.03    10    10  2.36   7.657    16.7        EXTENSION               #51 b^20(0.7764)  
+ 1.03    12    11  2.26   4.809     9.2        EXTENSION               #51 b^20(1.4495)  
+ 1.03    21    18  2.06   5.241    13.4      REDISCOVERY 1.001         #52 b^21(0.0009)  
+ 1.03    23    21  2.19   2.653    11.6 NEW-SAME-K-FAMILY               #51 b^20(3.7582) +c
+ 1.03    29    23  1.97   4.811    11.1 NEW-SAME-K-FAMILY               #64 b^30(0.0427)   !w
+ 1.03    25    23  2.24   9.627    32.5 NEW-SAME-K-FAMILY               #51 b^20(1.4135)  
+ 1.03    49    43  2.16   4.968    92.6 BEYOND-CATALOGUE               #51 b^20(6.0825) +c
+ 1.03    63    50  1.95   9.444    41.5         MULTIPLE 2.007                    2x 68 *
+ 1.03    75    59  1.91   9.122    45.1  LIKELY-MULTIPLE 1.963            ~2x 72 (b^34) *
+ 1.03    76    63   2.0  14.603   705.3    SAME-AC-ODD-T  3.16         #74 b^35(0.0162) *
+ 1.03    81    66  1.98   5.623    12.3 BEYOND-CATALOGUE                #51 b^20(3.512) * !w
+ 1.03    98    78  1.94  14.058    94.8         MULTIPLE 3.006                    3x 70 *
+ 1.07    13    12  2.24   7.879    15.2        EXTENSION               #54 b^22(0.6128)  
+ 1.07    16    14  2.15   6.856    18.0        EXTENSION               #54 b^22(0.3731)  
+ 1.07    19    16  2.09   6.289    11.5        EXTENSION               #54 b^22(0.1713)   !w
+ 1.07    23    19  2.03   5.841    13.5      REDISCOVERY 1.001         #56 b^23(0.0012)  
+ 1.07    29    23  1.97   4.874    14.6 NEW-SAME-K-FAMILY               #54 b^22(0.7684)   !w
+ 1.07    29    25  2.09   2.606    22.3 NEW-SAME-K-FAMILY               #54 b^22(6.2295) +c !w
+ 1.07    36    28  1.92   5.141    10.1 NEW-SAME-K-FAMILY               #75 b^35(0.0364)   !w
+ 1.07    36    30  2.01   2.919     4.7 NEW-SAME-K-FAMILY               #54 b^22(3.5256) +c !w
+ 1.07    35    31  2.12  13.082    72.7 NEW-SAME-K-FAMILY                #54 b^22(0.269)  
+ 1.07    39    33  2.08  12.439    51.6 NEW-SAME-K-FAMILY               #54 b^22(0.1412)   !w
+ 1.07    46    37  1.94   2.976     3.9 BEYOND-CATALOGUE               #54 b^22(3.4826) +c !w
+ 1.07    67    53  1.93  10.460    48.5         MULTIPLE 1.993                    2x 71 *
+ 1.07    69    55  1.93  10.383    40.2         MULTIPLE 2.007                    2x 75 *
+
+Legend: k_rd=read word len; k_law=Kepler-law len (T|E|^1.5/2.433); T*=T|E|^1.5/k_rd (~2.43 if word ok); * suspect k>=60; +c pos-c; !w unreliable word
+
+========================================================================
+SHORTLIST: defensibly-new orbits worth individual Newton-verification (20)
+========================================================================
+    L    b^k    T*       T     lam            class        a         c
+ 0.85    b^5  2.79   5.333    20.3 NEW-SAME-K-FAMILY   0.3136   -1.5239
+ 0.85   b^11  2.31   3.860    14.8 NEW-SAME-K-FAMILY   0.1384   -2.2647
+ 0.85   b^18  2.11   3.496    13.1 NEW-SAME-K-FAMILY   0.0911   -2.7879
+  0.9    b^6  2.66   5.785    18.7 NEW-SAME-K-FAMILY   0.2862   -1.5905
+  0.9   b^12  2.27   4.249    13.6        EXTENSION   0.1385   -2.2636
+  0.9   b^13  2.24   4.167    16.7        EXTENSION   0.1290   -2.3454
+  0.9   b^15  2.18   4.022    15.7        EXTENSION   0.1137   -2.4965
+  0.9   b^16  2.15   3.959    12.4        EXTENSION   0.1075   -2.5665
+  0.9   b^23  2.29   8.603    61.3        EXTENSION   0.1440   -2.2204
+0.935    b^8  2.48   5.568    16.1 NEW-SAME-K-FAMILY   0.2235   -1.7898
+0.935   b^10  2.34   4.797    40.0 NEW-SAME-K-FAMILY   0.1802   -1.9354
+0.935   b^16  2.15   4.309    15.0 NEW-SAME-K-FAMILY   0.1138   -2.4960
+  1.0    b^8  2.48   7.839    18.8 NEW-SAME-K-FAMILY   0.2807   -1.6049
+  1.0   b^17  2.13   5.089    14.9 NEW-SAME-K-FAMILY   0.1218   -2.4125
+ 1.03   b^10  2.36   7.657    16.7        EXTENSION   0.2341   -1.7501
+ 1.03   b^12  2.26   4.809     9.2        EXTENSION   0.2428   -1.0732
+ 1.03   b^25  2.24   9.627    32.5 NEW-SAME-K-FAMILY   0.2341   -1.1086
+ 1.07   b^13  2.24   7.879    15.2        EXTENSION   0.1972   -1.9022
+ 1.07   b^16  2.15   6.856    18.0        EXTENSION   0.1552   -2.1385
+ 1.07   b^35  2.12  13.082    72.7 NEW-SAME-K-FAMILY   0.1411   -2.2417
