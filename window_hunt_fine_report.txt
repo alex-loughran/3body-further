@@ -1,0 +1,8 @@
+=== Stable-window hunt: families [5, 7], band +/-0.45, ds=0.012, max_steps=150 ===
+  # 5 (b^4): min lambda_max=2.79514 at L=0.8115  [0.533,0.838], 0 stable pts (276s)
+  # 7 (b^4): min lambda_max=2.44075 at L=0.5913  [0.506,0.870], 0 stable pts (433s)
+
+Saved: window_hunt_fine.json
+
+=== Summary ===
+  No new stable windows in this set.

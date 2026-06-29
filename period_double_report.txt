@@ -1,0 +1,49 @@
+=== Part A.1: march in L, [0.8308, 0.8312], dL=2e-05 ===
+  L=0.830800 angle=2.54549 (pi=3.14159) |lam|=1.000000 n_unst=0
+  L=0.830820 angle=2.56881 (pi=3.14159) |lam|=1.000000 n_unst=0
+  L=0.830840 angle=2.59307 (pi=3.14159) |lam|=1.000000 n_unst=0
+  L=0.830860 angle=2.61841 (pi=3.14159) |lam|=1.000000 n_unst=0
+  L=0.830880 angle=2.64499 (pi=3.14159) |lam|=1.000000 n_unst=0
+  L=0.830900 angle=2.67302 (pi=3.14159) |lam|=1.000000 n_unst=0
+  L=0.830920 angle=2.70278 (pi=3.14159) |lam|=1.000000 n_unst=0
+  L=0.830940 angle=2.73465 (pi=3.14159) |lam|=1.000000 n_unst=0
+  L=0.830960 angle=2.76916 (pi=3.14159) |lam|=1.000000 n_unst=0
+  L=0.830980 angle=2.80713 (pi=3.14159) |lam|=1.000000 n_unst=2
+  L=0.831000 angle=2.84991 (pi=3.14159) |lam|=1.000000 n_unst=2
+  L=0.831020 angle=2.90004 (pi=3.14159) |lam|=1.000000 n_unst=2
+  L=0.831040 angle=2.96362 (pi=3.14159) |lam|=1.000000 n_unst=2
+  L=0.831060 angle=3.07047 (pi=3.14159) |lam|=1.000000 n_unst=2
+  L=0.831080 angle=3.14159 (pi=3.14159) |lam|=1.157922 n_unst=3  <-- SPLIT (period-doubled)
+  L=0.831100 angle=3.14159 (pi=3.14159) |lam|=1.244936 n_unst=3  <-- SPLIT (period-doubled)
+  L=0.831120 angle=3.14159 (pi=3.14159) |lam|=1.313678 n_unst=3  <-- SPLIT (period-doubled)
+  L=0.831140 angle=3.14159 (pi=3.14159) |lam|=1.373708 n_unst=3  <-- SPLIT (period-doubled)
+  L=0.831160 angle=3.14159 (pi=3.14159) |lam|=1.428403 n_unst=3  <-- SPLIT (period-doubled)
+  L=0.831180 angle=3.14159 (pi=3.14159) |lam|=1.479419 n_unst=3  <-- SPLIT (period-doubled)
+  L=0.831200 angle=3.14159 (pi=3.14159) |lam|=1.527716 n_unst=3  <-- SPLIT (period-doubled)
+
+=== Part A.2: bisect for L_PD in [0.831060, 0.831080] ===
+  L_PD = 0.83106381  (|lam|_pair just above = 1.001011)
+
+=== Part A.3: construct + verify doubled orbit at L=0.831064 ===
+  eigenvalue nearest -1: -0.998990+0.000000j
+  |Im(eigvec)|/|Re(eigvec)| = 0.00e+00
+
+         eps    r_T (open?)   r_2T (closed?)    r_T/eps   r_2T/eps^2
+    1.00e-05      4.617e-05        5.493e-05      4.617    549345.35
+    2.15e-05      9.938e-05        1.183e-04      4.613    254821.74
+    4.64e-05      2.137e-04        2.545e-04      4.604    118115.99
+    1.00e-04      4.585e-04        5.466e-04      4.585     54662.80
+    2.15e-04      9.790e-04        1.170e-03      4.544     25210.44
+    4.64e-04      2.068e-03        2.486e-03      4.456     11539.86
+    1.00e-03      4.266e-03        5.195e-03      4.266      5194.53
+    2.15e-03      8.309e-03        1.044e-02      3.857      2249.28
+    4.64e-03      1.381e-02        1.901e-02      2.975       882.23
+    1.00e-02      1.094e-02        2.481e-02      1.094       248.12
+
+  mean r_2T/r_T over eps in [3e-4, 3e-3] = 1.225
+  VERDICT: inconclusive — check eigenvector / L_PD.
+
+  Stability lost at L = 0.830980 (n_unstable -> 2): Krein bifurcation, BELOW L_PD — the window's upper edge is NOT the period-doubling.
+
+  Saved: period_double.json
+  Plot: period_double.png

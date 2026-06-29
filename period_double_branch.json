@@ -1,0 +1,10 @@
+{
+ "validate": {
+  "converged": true,
+  "residual": 1.1498561326127717e-12,
+  "P": 4.880863476384537,
+  "T": 4.880863476384537,
+  "z_drift": 0.0
+ },
+ "doubled": null
+}
