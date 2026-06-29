@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "threebody-physics"
+version = "0.1.0"
+description = "Periodic-orbit hunter for the planar equal-mass three-body problem: scanner, Floquet analysis, L-continuation, catalogue cross-reference."
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.20",
+    "scipy>=1.7",
+    "matplotlib>=3.4",
+    "numba>=0.58",
+]
+
+[project.optional-dependencies]
+# Arbitrary-precision Floquet validation (hp_floquet.py)
+highprec = ["mpmath>=1.3"]
+
+# The stable physics "engine" exposed as importable top-level modules.
+# Flat layout: no files are moved, existing `import three_body` keeps working,
+# and after `pip install -e .` these import from anywhere (e.g. the ML repo).
+# Experiment/analysis scripts (period_double, shadowing, verify_*, classify_*,
+# continue_*, etc.) and entry points (main) are intentionally NOT packaged --
+# they are research drivers, not library code.
+[tool.setuptools]
+py-modules = [
+    "three_body",
+    "floquet",
+    "scanner",
+    "parametrisations",
+    "continuation",
+    "pipeline",
+    "catalogue",
+    "ll_data",
+    "config",
+]
